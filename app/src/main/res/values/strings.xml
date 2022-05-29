@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BIT603_A3_JohnMcPherson</string>
+
+    <!-- login error message strings -->
+    <string name="login_error_header">Please enter your</string>
+    <string name="login_error_user_name">User Name</string>
+    <string name="login_error_password">Password</string>
+    <string name="error_incorrect_login">Sorry. We did not recognise that user/password combination. Please try again</string>
+
+    <!-- conjunction for error messages -->
+    <string name="and">and</string>
+
+
 </resources>
