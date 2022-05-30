@@ -81,6 +81,21 @@ public class IntegrationTest_ErrorMessages {
     }
 
     @Test
+    public void checkMessageForSuccessUsingThreeFields() {
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.add_user_password_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, true);
+
+        checkErrorMessage("Sorry. We cannot add that user because the user name is duplicated. Please try again",
+                R.string.add_user_error_unable_to_add,
+                R.string.add_user_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
     public void checkMessageForThreeFieldsMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, false);
