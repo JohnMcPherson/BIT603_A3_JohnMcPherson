@@ -70,7 +70,7 @@ public class User {
                                   String address,
                                   Boolean isAdmin) {
         User newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
-        return null;
+        return newUser;
     }
 
     public int getId() {
