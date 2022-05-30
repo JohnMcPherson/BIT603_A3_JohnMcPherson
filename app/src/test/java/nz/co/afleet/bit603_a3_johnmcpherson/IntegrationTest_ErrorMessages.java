@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import static nz.co.afleet.bit603_a3_johnmcpherson.FormChecker.determineErrorMessage;
 import static org.junit.Assert.assertTrue;
@@ -24,18 +25,8 @@ public class IntegrationTest_ErrorMessages {
     }
 
     @Test
-    public void testErrorMessages() {
-
-        checkMessageForSuccess();
-        checkMessageForBothFieldsMissing();
-        checkMessageForFirstFieldMissing();
-        checkMessageForSecondFieldMissing();
-        checkMessageForActionFailed();
-    }
-
-    @Test
     public void checkMessageForSuccess() {
-        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
 
@@ -49,7 +40,7 @@ public class IntegrationTest_ErrorMessages {
 
     @Test
     public void checkMessageForBothFieldsMissing() {
-        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
 
@@ -63,7 +54,7 @@ public class IntegrationTest_ErrorMessages {
 
     @Test
     public void checkMessageForFirstFieldMissing() {
-        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
 
@@ -77,7 +68,7 @@ public class IntegrationTest_ErrorMessages {
 
     @Test
     public void checkMessageForSecondFieldMissing() {
-        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
 
@@ -91,7 +82,7 @@ public class IntegrationTest_ErrorMessages {
 
     @Test
     public void checkMessageForActionFailed() {
-        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
 
@@ -106,7 +97,7 @@ public class IntegrationTest_ErrorMessages {
     private void checkErrorMessage(String expectedMessage,
                                    int stringResourceInvalidCombination,
                                    int stringResourceDetailsRequiredHeader,
-                                   HashMap<Integer, Boolean> fieldsFilledOrNotFilled,
+                                   LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                                    boolean actionSucceeded) {
 
         String actualMessage = determineErrorMessage(

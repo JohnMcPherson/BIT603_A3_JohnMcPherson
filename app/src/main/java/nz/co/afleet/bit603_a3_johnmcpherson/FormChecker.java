@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FormChecker {
@@ -33,7 +34,7 @@ public class FormChecker {
                         Context context,
                         int stringResourceInvalidCombination,
                        int stringResourceDetailsRequiredHeader,
-                       HashMap<Integer, Boolean> fieldsFilledOrNotFilled,
+                       LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                        boolean actionSucceeded) {
         this.context = context;
         this.stringResourceInvalidCombination = stringResourceInvalidCombination;
@@ -45,7 +46,7 @@ public class FormChecker {
     public static String determineErrorMessage(Context context,
                                                int stringResourceInvalidCombination,
                                                int stringResourceDetailsRequiredHeader,
-                                               HashMap<Integer, Boolean> fieldsFilledOrNotFilled,
+                                               LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                                                boolean actionSucceeded) {
         FormChecker formChecker = new FormChecker(
                 context,
@@ -100,6 +101,9 @@ public class FormChecker {
 
     private void initialiseFieldsNotPopulated(HashMap<Integer, Boolean> fieldsFilledOrNotFilled) {
         mandatoryFieldsNotPopulated = new ArrayList<>();
+        // I used a LinkedHashMap because I understand that the order in which entries are added is retained
+        // when iterating over it (with a for loop)
+        // The order is important because we want control over the order in which the field names are added to the error message
         for (Map.Entry<Integer, Boolean> fieldFilledOrNotFilled : fieldsFilledOrNotFilled.entrySet()) {
             if (!fieldFilledOrNotFilled.getValue()) mandatoryFieldsNotPopulated.add(fieldFilledOrNotFilled.getKey());
         }
