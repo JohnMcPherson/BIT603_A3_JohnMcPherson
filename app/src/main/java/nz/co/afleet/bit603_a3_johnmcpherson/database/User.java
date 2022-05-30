@@ -73,16 +73,19 @@ public class User {
                                   String address,
                                   boolean isAdmin) {
         User newUser = null;
-        if (    !isEmpty(name)
-                && !isEmpty(password)
-                && !isEmpty(dateOfBirth)
-                && !isEmpty(employeeNumber)
-                && !isEmpty(phoneNumber)
-                && !isEmpty(address)) {
+        if (allValuesArePopulated(name, password, dateOfBirth, employeeNumber, phoneNumber, address)) {
                     newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
                     addUserToDatabase(context, newUser);
         }
         return newUser;
+    }
+
+    private static boolean allValuesArePopulated(String... values
+    ) {
+        for (String value: values) {
+            if (value == null || "".equals(value)) return false;
+        }
+        return true;
     }
 
     private static void addUserToDatabase(Context context, User newUser) {
