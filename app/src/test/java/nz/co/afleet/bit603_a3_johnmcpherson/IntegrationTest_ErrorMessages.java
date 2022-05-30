@@ -25,16 +25,72 @@ public class IntegrationTest_ErrorMessages {
 
     @Test
     public void testErrorMessages() {
-/*
+
         checkMessageForSuccess();
         checkMessageForBothFieldsMissing();
         checkMessageForFirstFieldMissing();
         checkMessageForSecondFieldMissing();
-*/
         checkMessageForActionFailed();
     }
 
-    private void checkMessageForActionFailed() {
+    @Test
+    public void checkMessageForSuccess() {
+        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+
+        checkErrorMessage("",
+                R.string.error_incorrect_login,
+                R.string.login_details_required_header,
+                fieldsFilledOrNotFilled,
+                true
+        );
+    }
+
+    @Test
+    public void checkMessageForBothFieldsMissing() {
+        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+
+        checkErrorMessage("Please enter your user name and password",
+                R.string.error_incorrect_login,
+                R.string.login_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
+    public void checkMessageForFirstFieldMissing() {
+        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
+
+        checkErrorMessage("Please enter your user name",
+                R.string.error_incorrect_login,
+                R.string.login_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
+    public void checkMessageForSecondFieldMissing() {
+        HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+
+        checkErrorMessage("Please enter your password",
+                R.string.error_incorrect_login,
+                R.string.login_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
+    public void checkMessageForActionFailed() {
         HashMap<Integer, Boolean> fieldsFilledOrNotFilled = new HashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
