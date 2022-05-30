@@ -34,7 +34,8 @@ public class IntTest_User {
 
     @Test
     public void testCreateUser() {
-        User userJohn = User.createUser(   JOHN,
+        User userJohn = User.createUser(application,
+                                    JOHN,
                                     JOHN_PASSWORD,
                                     JOHN_DATE_OF_BIRTH,
                                     JOHN_EMPLOYEE_NUMBER,
@@ -52,25 +53,27 @@ public class IntTest_User {
 
     @Test
     public void testCreateUserBlankName() {
-        User userNoName = User.createUser(   "",
-                                    JOHN_PASSWORD,
-                                    JOHN_DATE_OF_BIRTH,
-                                    JOHN_EMPLOYEE_NUMBER,
-                                    JOHN_PHONE_NUMBER,
-                                    JOHN_ADDRESS,
-                                    JOHN_IS_ADMIN);
+        User userNoName = User.createUser(application,
+                                    "", // ensure that "" is caught
+                                        JOHN_PASSWORD,
+                                        JOHN_DATE_OF_BIRTH,
+                                        JOHN_EMPLOYEE_NUMBER,
+                                        JOHN_PHONE_NUMBER,
+                                        JOHN_ADDRESS,
+                                        JOHN_IS_ADMIN);
         assertNull(userNoName);
     }
 
     @Test
     public void testCreateUserBlankPhoneNumber() {
-        User noPhoneNumber = User.createUser(   JOHN,
-                                    JOHN_PASSWORD,
-                                    JOHN_DATE_OF_BIRTH,
-                                    JOHN_EMPLOYEE_NUMBER,
-                                    "",
-                                    JOHN_ADDRESS,
-                                    JOHN_IS_ADMIN);
+        User noPhoneNumber = User.createUser(application,
+                                            JOHN,
+                                            JOHN_PASSWORD,
+                                            JOHN_DATE_OF_BIRTH,
+                                            JOHN_EMPLOYEE_NUMBER,
+                                            null, // ensure that null is caught
+                                            JOHN_ADDRESS,
+                                            JOHN_IS_ADMIN);
         assertNull(noPhoneNumber);
     }
 

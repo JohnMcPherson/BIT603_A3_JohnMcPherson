@@ -1,6 +1,7 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.database;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -9,7 +10,6 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
@@ -64,16 +64,35 @@ public class User {
 
     // Use of this method ensures that new users are added to the database
     // If user data is invalid, we can ensure it does NOT get added to the database
-    public static User createUser(@NonNull String name,
+    public static User createUser(Context context,
+                                  @NonNull String name,
                                   @NonNull String password,
                                   String dateOfBirth,
                                   String employeeNumber,
                                   String phoneNumber,
                                   String address,
                                   boolean isAdmin) {
-        User newUser;
-        newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
+        User newUser = null;
+        if (    !isEmpty(name)
+                && !isEmpty(password)
+                && !isEmpty(dateOfBirth)
+                && !isEmpty(employeeNumber)
+                && !isEmpty(phoneNumber)
+                && !isEmpty(address)) {
+                    newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
+                    addUserToDatabase(context, newUser);
+        }
         return newUser;
+    }
+
+    private static void addUserToDatabase(Context context, User newUser) {
+        ApplicationDatabase applicationDatabase = ApplicationDatabase.getInstance(context);
+        DaoUser daoUser = applicationDatabase.daoUser();
+        daoUser.addUser(newUser);
+    }
+
+    public static boolean isEmpty(String name) {
+        return (name == null || "".equals(name));
     }
 
     public int getId() {
