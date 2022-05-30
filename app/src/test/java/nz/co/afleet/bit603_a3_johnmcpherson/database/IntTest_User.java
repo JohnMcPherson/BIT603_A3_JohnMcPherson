@@ -33,7 +33,7 @@ public class IntTest_User {
 
     @Test
     public void testCreateUser() {
-        User userJohn = new User(   JOHN,
+        User userJohn = User.createUser(   JOHN,
                                     JOHN_PASSWORD,
                                     JOHN_DATE_OF_BIRTH,
                                     JOHN_EMPLOYEE_NUMBER,

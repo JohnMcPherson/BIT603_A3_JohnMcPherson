@@ -43,7 +43,7 @@ public class User {
     @ColumnInfo(name = "IsAdmin")
     private Boolean isAdmin;
 
-    public User(@NonNull String name,
+    private User(@NonNull String name,
                 @NonNull String password,
                 String dateOfBirth,
                 String employeeNumber,
@@ -59,7 +59,18 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    public User() {
+    protected User() {
+    }
+
+    public static User createUser(@NonNull String name,
+                                  @NonNull String password,
+                                  String dateOfBirth,
+                                  String employeeNumber,
+                                  String phoneNumber,
+                                  String address,
+                                  Boolean isAdmin) {
+        User newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
+        return null;
     }
 
     public int getId() {
