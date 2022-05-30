@@ -9,6 +9,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
 public class User {
+
+
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private int id;
@@ -17,28 +20,39 @@ public class User {
     private String name;
 
     @ColumnInfo(name = "Password")
-    @NonNull
     private String password;
 
     @ColumnInfo(name = "DateOfBirth")
-    @NonNull
     private String dateOfBirth;
 
     @ColumnInfo(name = "EmployeeNumber")
-    @NonNull
     private String employeeNumber;
 
     @ColumnInfo(name = "ContactPhoneNumber")
-    @NonNull
-    private String contactPhoneNumber;
+    private String phoneNumber;
 
     // ASSUMPTION: a single text field is OK for address. (Address 1, Address 2 etc not required)
     @ColumnInfo(name = "Address")
-    @NonNull
     private String address;
+
+    public User(@NonNull String name, @NonNull String password, @NonNull String dateOfBirth, @NonNull String employeeNumber, @NonNull String phoneNumber, @NonNull String address) {
+        this.name = name;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.employeeNumber = employeeNumber;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
+    public User() {
+    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -77,12 +91,12 @@ public class User {
     }
 
     @NonNull
-    public String getContactPhoneNumber() {
-        return contactPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setContactPhoneNumber(@NonNull String contactPhoneNumber) {
-        this.contactPhoneNumber = contactPhoneNumber;
+    public void setPhoneNumber(@NonNull String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @NonNull
@@ -94,25 +108,4 @@ public class User {
         this.address = address;
     }
 
-    public User() {}
-
-
-    /**
-     * this constructor enforces that all fields are non-null, at the database/entity level
-     * @param name
-     * @param password
-     * @param dateOfBirth
-     * @param employeeNumber
-     * @param contactPhoneNumber
-     * @param address
-     */
-    public User(String name, @NonNull String password, @NonNull String dateOfBirth, @NonNull String employeeNumber, @NonNull String contactPhoneNumber, @NonNull String address) {
-
-        this.name = name;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.employeeNumber = employeeNumber;
-        this.contactPhoneNumber = contactPhoneNumber;
-        this.address = address;
-    }
 }
