@@ -2,9 +2,9 @@
     <string name="app_name">BIT603_A3_JohnMcPherson</string>
 
     <!-- login error message strings -->
-    <string name="login_error_header">Please enter your</string>
-    <string name="login_error_user_name">User Name</string>
-    <string name="login_error_password">Password</string>
+    <string name="login_details_required_header">Please enter your</string>
+    <string name="login_user_field_name">user name</string>
+    <string name="login_password_field_name">password</string>
     <string name="error_incorrect_login">Sorry. We did not recognise that user/password combination. Please try again</string>
 
     <!-- conjunction for error messages -->

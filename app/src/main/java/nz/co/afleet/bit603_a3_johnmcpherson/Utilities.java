@@ -31,8 +31,8 @@ public class Utilities {
                                                   boolean actionSucceeded) {
         if (actionSucceeded) return ""; // clear the error message
 
-        // we don't have a successful login. If we have both user name and password, we must have a bad combination
-        if (isFilledFirstField && actionSucceeded) return context.getString(stringResourceInvalidCombination);
+        // we don't have a successful action. If we have both fields filled in, there was a problem using them
+        if (isFilledFirstField && isFilledSecondField) return context.getString(stringResourceInvalidCombination);
 
         // We are missing one or both input fields
         String errorMessage = context.getString(stringResourceDetailsRequiredHeader) + " ";
