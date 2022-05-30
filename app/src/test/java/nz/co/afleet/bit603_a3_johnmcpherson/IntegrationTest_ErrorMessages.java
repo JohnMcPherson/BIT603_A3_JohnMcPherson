@@ -96,6 +96,18 @@ public class IntegrationTest_ErrorMessages {
     }
 
     @Test
+    public void checkMessageForSuccessUsingNoFields() { // not an expected scenario. But let's edge test anyway
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
+
+        checkErrorMessage("Sorry. We cannot add that user because the user name is duplicated. Please try again",
+                R.string.add_user_error_unable_to_add,
+                R.string.add_user_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
     public void checkMessageForThreeFieldsMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, false);
