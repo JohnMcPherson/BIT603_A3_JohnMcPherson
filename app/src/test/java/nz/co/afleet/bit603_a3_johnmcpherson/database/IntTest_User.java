@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(RobolectricTestRunner.class)
 public class IntTest_User {
     private Application application;
@@ -36,16 +38,12 @@ public class IntTest_User {
                                     JOHN_EMPLOYEE_NUMBER,
                                     JOHN_PHONE_NUMBER,
                                     JOHN_ADDRESS);
-    }
-
-    @Test
-    public void testCreateUserAttemptNulls() {
-        User userJohn = new User(   JOHN,
-                                    null,
-                                    JOHN_DATE_OF_BIRTH,
-                                    JOHN_EMPLOYEE_NUMBER,
-                                    JOHN_PHONE_NUMBER,
-                                    JOHN_ADDRESS);
+        assertEquals(userJohn.getName(), JOHN);
+        assertEquals(userJohn.getPassword(), JOHN_PASSWORD);
+        assertEquals(userJohn.getDateOfBirth(), JOHN_DATE_OF_BIRTH);
+        assertEquals(userJohn.getEmployeeNumber(), JOHN_EMPLOYEE_NUMBER);
+        assertEquals(userJohn.getPhoneNumber(), JOHN_PHONE_NUMBER);
+        assertEquals(userJohn.getAddress(), JOHN_ADDRESS);
     }
 
     @After
