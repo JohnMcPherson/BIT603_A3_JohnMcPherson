@@ -17,4 +17,9 @@
     <string name="add_user_date_of_birth_field_name">date of birth</string>
     <string name="add_user_error_unable_to_add">Sorry. We cannot add that user because the user name is duplicated. Please try again</string>
 
+    <!-- Delete User error message strings -->
+    <string name="delete_user_details_required_header">Please enter</string>
+    <string name="delete_user_user_field_name">user name</string>
+    <string name="delete__user_error_unable_to_delete">Sorry. We cannot find that user. Please try again</string>
+
 </resources>

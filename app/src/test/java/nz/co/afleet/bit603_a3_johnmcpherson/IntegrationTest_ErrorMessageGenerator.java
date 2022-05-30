@@ -9,14 +9,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import static nz.co.afleet.bit603_a3_johnmcpherson.FormChecker.determineErrorMessage;
+import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.determineErrorMessage;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-public class IntegrationTest_FormChecker {
+public class IntegrationTest_ErrorMessageGenerator {
     private Application application;
 
     @Before
@@ -61,6 +60,19 @@ public class IntegrationTest_FormChecker {
         checkErrorMessage("Please enter your user name",
                 R.string.error_incorrect_login,
                 R.string.login_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
+    public void checkErrorMessageOneFieldOnly() {
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.delete_user_user_field_name, false);
+
+        checkErrorMessage("Please enter user name",
+                R.string.delete__user_error_unable_to_delete,
+                R.string.delete_user_details_required_header,
                 fieldsFilledOrNotFilled,
                 false
         );

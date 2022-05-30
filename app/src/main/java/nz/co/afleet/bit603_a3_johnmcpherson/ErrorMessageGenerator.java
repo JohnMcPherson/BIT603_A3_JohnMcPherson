@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FormChecker {
+public class ErrorMessageGenerator {
 
     private final Context context; // supports retrieval of strings from the string resources
     private final int stringResourceInvalidCombination; //the message for when the user has filled in both fields, but the action failed. e.g. incorrect user/password combination
@@ -30,7 +30,7 @@ public class FormChecker {
      *
      *@param actionSucceeded
      */
-    public FormChecker(
+    public ErrorMessageGenerator(
                         Context context,
                         int stringResourceInvalidCombination,
                        int stringResourceDetailsRequiredHeader,
@@ -48,7 +48,7 @@ public class FormChecker {
                                                int stringResourceDetailsRequiredHeader,
                                                LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                                                boolean actionSucceeded) {
-        FormChecker formChecker = new FormChecker(
+        ErrorMessageGenerator formChecker = new ErrorMessageGenerator(
                 context,
                 stringResourceInvalidCombination,
                 stringResourceDetailsRequiredHeader,
