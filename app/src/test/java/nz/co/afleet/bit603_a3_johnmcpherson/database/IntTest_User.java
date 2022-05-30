@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntTest_User {
@@ -47,6 +48,30 @@ public class IntTest_User {
         assertEquals(userJohn.getPhoneNumber(), JOHN_PHONE_NUMBER);
         assertEquals(userJohn.getAddress(), JOHN_ADDRESS);
         assertEquals(userJohn.isAdmin(), JOHN_IS_ADMIN);
+    }
+
+    @Test
+    public void testCreateUserBlankName() {
+        User userNoName = User.createUser(   "",
+                                    JOHN_PASSWORD,
+                                    JOHN_DATE_OF_BIRTH,
+                                    JOHN_EMPLOYEE_NUMBER,
+                                    JOHN_PHONE_NUMBER,
+                                    JOHN_ADDRESS,
+                                    JOHN_IS_ADMIN);
+        assertNull(userNoName);
+    }
+
+    @Test
+    public void testCreateUserBlankPhoneNumber() {
+        User noPhoneNumber = User.createUser(   JOHN,
+                                    JOHN_PASSWORD,
+                                    JOHN_DATE_OF_BIRTH,
+                                    JOHN_EMPLOYEE_NUMBER,
+                                    "",
+                                    JOHN_ADDRESS,
+                                    JOHN_IS_ADMIN);
+        assertNull(noPhoneNumber);
     }
 
     @After

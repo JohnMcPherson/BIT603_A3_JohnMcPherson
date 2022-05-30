@@ -41,7 +41,7 @@ public class User {
 
     // isAdmin
     @ColumnInfo(name = "IsAdmin")
-    private Boolean isAdmin;
+    private boolean isAdmin;
 
     private User(@NonNull String name,
                 @NonNull String password,
@@ -49,7 +49,7 @@ public class User {
                 String employeeNumber,
                 String phoneNumber,
                 String address,
-                Boolean isAdmin) {
+                boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -62,14 +62,17 @@ public class User {
     protected User() {
     }
 
+    // Use of this method ensures that new users are added to the database
+    // If user data is invalid, we can ensure it does NOT get added to the database
     public static User createUser(@NonNull String name,
                                   @NonNull String password,
                                   String dateOfBirth,
                                   String employeeNumber,
                                   String phoneNumber,
                                   String address,
-                                  Boolean isAdmin) {
-        User newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
+                                  boolean isAdmin) {
+        User newUser;
+        newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
         return newUser;
     }
 
@@ -148,6 +151,14 @@ public class User {
         users.add(getDefaultAdminUser());
         return users;
     }
+
+    /**
+     * Returns a User with the default admin credentials
+     * ASSUMPTION This user should not be added to the database. A user is not to be created (and added to the database) by the administrator,
+     * unless all fields are non-blank. As we do not have contact etc details for the Admin user, I assume the admin should not be in the database either
+     *
+     * @return
+     */
 
     private static User getDefaultAdminUser() {
         String DEFAULT_ADMIN = "Admin";
