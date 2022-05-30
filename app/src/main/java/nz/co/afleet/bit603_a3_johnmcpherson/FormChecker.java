@@ -77,7 +77,6 @@ public class FormChecker {
         String errorMessage = context.getString(stringResourceDetailsRequiredHeader)
                 + " " + nameOfFirstMissingField;
 
-/*
         // add any fields between the first field and the last field (there may not be any)
         // use commas as separators
         for (int index = 1; index < mandatoryFieldsNotPopulated.size() - 1; index++) {
@@ -85,7 +84,6 @@ public class FormChecker {
             errorMessage += ", " + nameOfNextField;
         }
 
-*/
         if (mandatoryFieldsNotPopulated.size() > 1) { // we need to finish with "and [last field name]"
             // add the name of the last field
             String nameOfLastField = getNameOfMissingField(context, mandatoryFieldsNotPopulated.size() - 1);
