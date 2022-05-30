@@ -97,11 +97,18 @@ public class FormChecker {
         return context.getString(stringResourceIdentifier);
     }
 
+    // I used a LinkedHashMap (as a because the order in which entries are added is retained when iterating over it (with a for loop)
+    // The order is important because we want control over the order in which the field names are added to the error message
+
+    /**
+     *
+     * @param fieldsFilledOrNotFilled
+     *     I used a LinkedHashMap because I understand that the order in which entries are added is retained
+     *     when iterating over a LinkedHashMap (with a for loop)
+     *     The order is important because we want control over the order in which the field names are added to the error message
+     */
     private void initialiseFieldsNotPopulated(HashMap<Integer, Boolean> fieldsFilledOrNotFilled) {
         mandatoryFieldsNotPopulated = new ArrayList<>();
-        // I used a LinkedHashMap because I understand that the order in which entries are added is retained
-        // when iterating over it (with a for loop)
-        // The order is important because we want control over the order in which the field names are added to the error message
         for (Map.Entry<Integer, Boolean> fieldFilledOrNotFilled : fieldsFilledOrNotFilled.entrySet()) {
             if (!fieldFilledOrNotFilled.getValue()) mandatoryFieldsNotPopulated.add(fieldFilledOrNotFilled.getKey());
         }
