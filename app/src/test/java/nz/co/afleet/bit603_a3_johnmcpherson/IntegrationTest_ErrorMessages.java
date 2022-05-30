@@ -81,6 +81,21 @@ public class IntegrationTest_ErrorMessages {
     }
 
     @Test
+    public void checkMessageForThreeFieldsMissing() {
+        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
+        fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.add_user_password_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, false);
+
+        checkErrorMessage("Please enter user name, password and date of birth",
+                R.string.add_user_error_unable_to_add,
+                R.string.add_user_details_required_header,
+                fieldsFilledOrNotFilled,
+                false
+        );
+    }
+
+    @Test
     public void checkMessageForActionFailed() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
