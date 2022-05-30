@@ -16,7 +16,7 @@ import static nz.co.afleet.bit603_a3_johnmcpherson.FormChecker.determineErrorMes
 import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-public class IntegrationTest_ErrorMessages {
+public class IntegrationTest_FormChecker {
     private Application application;
 
     @Before
@@ -99,11 +99,11 @@ public class IntegrationTest_ErrorMessages {
     public void checkMessageForSuccessUsingNoFields() { // not an expected scenario. But let's edge test anyway
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
 
-        checkErrorMessage("Sorry. We cannot add that user because the user name is duplicated. Please try again",
+        checkErrorMessage("",
                 R.string.add_user_error_unable_to_add,
                 R.string.add_user_details_required_header,
                 fieldsFilledOrNotFilled,
-                false
+                true
         );
     }
 
