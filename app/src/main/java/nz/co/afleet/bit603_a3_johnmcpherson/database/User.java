@@ -1,15 +1,19 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.database;
 
+import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
 public class User {
-
 
 
     @PrimaryKey(autoGenerate = true)
@@ -35,13 +39,24 @@ public class User {
     @ColumnInfo(name = "Address")
     private String address;
 
-    public User(@NonNull String name, @NonNull String password, @NonNull String dateOfBirth, @NonNull String employeeNumber, @NonNull String phoneNumber, @NonNull String address) {
+    // isAdmin
+    @ColumnInfo(name = "IsAdmin")
+    private Boolean isAdmin;
+
+    public User(@NonNull String name,
+                @NonNull String password,
+                String dateOfBirth,
+                String employeeNumber,
+                String phoneNumber,
+                String address,
+                Boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.employeeNumber = employeeNumber;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.isAdmin = isAdmin;
     }
 
     public User() {
@@ -55,11 +70,12 @@ public class User {
         this.id = id;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
@@ -72,40 +88,63 @@ public class User {
         this.password = password;
     }
 
-    @NonNull
-    public String getDateOfBirth() {
+   public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(@NonNull String dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @NonNull
     public String getEmployeeNumber() {
         return employeeNumber;
     }
 
-    public void setEmployeeNumber(@NonNull String employeeNumber) {
+    public void setEmployeeNumber(String employeeNumber) {
         this.employeeNumber = employeeNumber;
     }
 
-    @NonNull
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(@NonNull String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    @NonNull
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(@NonNull String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+
+
+    public static ArrayList<User> getUsers(Application application) {
+        ApplicationDatabase applicationDatabasee = ApplicationDatabase.getInstance(application);
+        DaoUser daoUser = applicationDatabasee.daoUser();
+        ArrayList<User> users = new ArrayList<>(daoUser.getUsers());
+        users.add(getDefaultAdminUser());
+        return users;
+    }
+
+    private static User getDefaultAdminUser() {
+        String DEFAULT_ADMIN = "Admin";
+        String DEFAULT_ADMIN_PASSWORD = "CookieManagement84";
+        return new User(
+                DEFAULT_ADMIN,
+                DEFAULT_ADMIN_PASSWORD,
+                "", "", "", "",
+                true);
+    }
 }

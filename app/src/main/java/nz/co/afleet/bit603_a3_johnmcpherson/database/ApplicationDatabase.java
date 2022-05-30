@@ -8,12 +8,12 @@ import androidx.room.RoomDatabase;
 
 // default visibility so that only authorised classes can use it
 @Database(entities = {User.class}, version = 1)
-abstract class InventoryDatabase extends RoomDatabase {
-    private static InventoryDatabase instance;
+abstract class ApplicationDatabase extends RoomDatabase {
+    private static ApplicationDatabase instance;
 
-    static InventoryDatabase getInstance(Context context) {
+    static ApplicationDatabase getInstance(Context context) {
         if (instance == null) { // initialise if not already initialised
-            instance = Room.databaseBuilder(context, InventoryDatabase.class, "inventorydb").allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(context, ApplicationDatabase.class, "inventorydb").allowMainThreadQueries().build();
         }
         return instance;
     }
