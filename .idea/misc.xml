@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
+        <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/content_admin_user.xml" value="0.3385416666666667" />
+        <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/menu/activity_main_drawer.xml" value="0.3" />
+        <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/menu/admin_user.xml" value="0.3" />
       </map>
     </option>
   </component>
