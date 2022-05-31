@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -86,6 +87,14 @@ public class IntTest_User {
     public void testIsDuplicateOfUser() {
         createStandardUserJohn();
         assertTrue(User.isDuplicateOfUserName(application, JOHN));
+    }
+
+    @Test
+    public void testDuplicateNoteAdded() {
+        User newUser = createStandardUserJohn();
+        assertNotNull(newUser);
+        User failedUserAddition = createStandardUserJohn(); // duplicate name, so should not be added
+        assertNull(failedUserAddition);
     }
 
     @After

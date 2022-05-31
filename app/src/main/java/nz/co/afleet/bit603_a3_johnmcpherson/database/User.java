@@ -74,7 +74,8 @@ public class User {
                                   String address,
                                   boolean isAdmin) {
         User newUser = null;
-        if (allValuesArePopulated(name, password, dateOfBirth, employeeNumber, phoneNumber, address)) {
+        if (allValuesArePopulated(name, password, dateOfBirth, employeeNumber, phoneNumber, address)
+            /*&& !isDuplicateOfUserName(context, name)*/) {
             newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
             addUserToDatabase(context, newUser);
         }
