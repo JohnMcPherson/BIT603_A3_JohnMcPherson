@@ -103,7 +103,7 @@ public class IntTest_User {
         User newUser = createStandardUserJohn();
         assertNotNull(newUser);
         boolean removed = User.removeUser(application, JOHN);
-        assertTrue(removed); // confirm that removeUser says it removed the user
+        assertTrue(removed); // confirm that removeUser() believes it removed the user
         assertFalse(User.isDuplicateOfUserName(application, JOHN)); // confirm that JOHN really is gone
     }
 
