@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -102,7 +103,8 @@ public class IntTest_User {
         User newUser = createStandardUserJohn();
         assertNotNull(newUser);
         boolean removed = User.removeUser(application, JOHN);
-        assertTrue(removed);
+        assertTrue(removed); // confirm that removeUser "thinks" it removed the user
+        assertFalse(User.isDuplicateOfUserName(application, JOHN)); // confirm that JOHN really is gone
     }
 
     @After
