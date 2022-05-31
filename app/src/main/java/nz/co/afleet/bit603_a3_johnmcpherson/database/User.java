@@ -44,12 +44,12 @@ public class User {
     private boolean isAdmin;
 
     private User(@NonNull String name,
-                @NonNull String password,
-                String dateOfBirth,
-                String employeeNumber,
-                String phoneNumber,
-                String address,
-                boolean isAdmin) {
+                 @NonNull String password,
+                 String dateOfBirth,
+                 String employeeNumber,
+                 String phoneNumber,
+                 String address,
+                 boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -74,15 +74,14 @@ public class User {
                                   boolean isAdmin) {
         User newUser = null;
         if (allValuesArePopulated(name, password, dateOfBirth, employeeNumber, phoneNumber, address)) {
-                    newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
-                    addUserToDatabase(context, newUser);
+            newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
+            addUserToDatabase(context, newUser);
         }
         return newUser;
     }
 
-    private static boolean allValuesArePopulated(String... values
-    ) {
-        for (String value: values) {
+    private static boolean allValuesArePopulated(String... values) {
+        for (String value : values) {
             if (value == null || "".equals(value)) return false;
         }
         return true;
@@ -92,10 +91,6 @@ public class User {
         ApplicationDatabase applicationDatabase = ApplicationDatabase.getInstance(context);
         DaoUser daoUser = applicationDatabase.daoUser();
         daoUser.addUser(newUser);
-    }
-
-    public static boolean isEmpty(String name) {
-        return (name == null || "".equals(name));
     }
 
     public int getId() {
@@ -124,7 +119,7 @@ public class User {
         this.password = password;
     }
 
-   public String getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -163,7 +158,6 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
-
 
 
     public static ArrayList<User> getUsers(Application application) {
