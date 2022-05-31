@@ -10,6 +10,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
@@ -80,6 +81,20 @@ public class User {
         return newUser;
     }
 
+    public static boolean isDuplicateOfUserName(Context context, String candidateName) {
+        List<User> currentUsers = getDaoUser(context).getUsers();
+        // check each current inventory item for the candidate name
+        for (User currentUser : currentUsers) {
+            if (currentUser.getName().equals(candidateName)) {
+                // a match means there is a duplicate
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     private static boolean allValuesArePopulated(String... values) {
         for (String value : values) {
             if (value == null || "".equals(value)) return false;
@@ -88,9 +103,12 @@ public class User {
     }
 
     private static void addUserToDatabase(Context context, User newUser) {
+        getDaoUser(context).addUser(newUser);
+    }
+
+    private static DaoUser getDaoUser(Context context) {
         ApplicationDatabase applicationDatabase = ApplicationDatabase.getInstance(context);
-        DaoUser daoUser = applicationDatabase.daoUser();
-        daoUser.addUser(newUser);
+        return applicationDatabase.daoUser();
     }
 
     public int getId() {

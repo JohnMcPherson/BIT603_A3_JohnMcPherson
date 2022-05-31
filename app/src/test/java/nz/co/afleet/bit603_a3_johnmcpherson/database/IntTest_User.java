@@ -12,6 +12,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntTest_User {
@@ -34,14 +35,7 @@ public class IntTest_User {
 
     @Test
     public void testCreateUser() {
-        User userJohn = User.createUser(application,
-                                    JOHN,
-                                    JOHN_PASSWORD,
-                                    JOHN_DATE_OF_BIRTH,
-                                    JOHN_EMPLOYEE_NUMBER,
-                                    JOHN_PHONE_NUMBER,
-                                    JOHN_ADDRESS,
-                                    JOHN_IS_ADMIN);
+        User userJohn = createStandardUserJohn();
         assertEquals(userJohn.getName(), JOHN);
         assertEquals(userJohn.getPassword(), JOHN_PASSWORD);
         assertEquals(userJohn.getDateOfBirth(), JOHN_DATE_OF_BIRTH);
@@ -49,6 +43,17 @@ public class IntTest_User {
         assertEquals(userJohn.getPhoneNumber(), JOHN_PHONE_NUMBER);
         assertEquals(userJohn.getAddress(), JOHN_ADDRESS);
         assertEquals(userJohn.isAdmin(), JOHN_IS_ADMIN);
+    }
+
+    private User createStandardUserJohn() {
+        return User.createUser( application,
+                                JOHN,
+                                JOHN_PASSWORD,
+                                JOHN_DATE_OF_BIRTH,
+                                JOHN_EMPLOYEE_NUMBER,
+                                JOHN_PHONE_NUMBER,
+                                JOHN_ADDRESS,
+                                JOHN_IS_ADMIN);
     }
 
     @Test
@@ -75,6 +80,12 @@ public class IntTest_User {
                                             JOHN_ADDRESS,
                                             JOHN_IS_ADMIN);
         assertNull(noPhoneNumber);
+    }
+
+    @Test
+    public void testIsDuplicateOfUser() {
+        createStandardUserJohn();
+        assertTrue(User.isDuplicateOfUserName(application, JOHN));
     }
 
     @After
