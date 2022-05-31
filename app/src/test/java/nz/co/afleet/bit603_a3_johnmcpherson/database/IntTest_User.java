@@ -90,11 +90,19 @@ public class IntTest_User {
     }
 
     @Test
-    public void testDuplicateNoteAdded() {
+    public void testDuplicateNotAdded() {
         User newUser = createStandardUserJohn();
         assertNotNull(newUser);
         User failedUserAddition = createStandardUserJohn(); // duplicate name, so should not be added
         assertNull(failedUserAddition);
+    }
+
+    @Test
+    public void testRemoveUser() {
+        User newUser = createStandardUserJohn();
+        assertNotNull(newUser);
+        boolean removed = User.removeUser(application, JOHN);
+        assertTrue(removed);
     }
 
     @After

@@ -94,7 +94,12 @@ public class User {
         return false;
     }
 
-
+    public static boolean removeUser(Context context, String userName) {
+        if (isDuplicateOfUserName(context, userName)) {
+            return true;
+        }
+        return false;
+    }
 
     private static boolean allValuesArePopulated(String... values) {
         for (String value : values) {
