@@ -94,9 +94,16 @@ public class User {
         return false;
     }
 
+    /**
+     *
+     * @param context required to access the database
+     * @param userName the name of the user we want to delete
+     * @return true if the user was removed
+     */
     public static boolean removeUser(Context context, String userName) {
         if (isDuplicateOfUserName(context, userName)) {
-            return true;
+            getDaoUser(context).deleteByName(userName);
+            return !isDuplicateOfUserName(context, userName); // this should always be true. But this way, we are certain we have removed the user
         }
         return false;
     }
