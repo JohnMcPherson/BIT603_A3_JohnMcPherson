@@ -21,5 +21,8 @@
     <string name="delete_user_details_required_header">Please enter</string>
     <string name="delete_user_user_field_name">user name</string>
     <string name="delete__user_error_unable_to_delete">Sorry. We cannot find that user. Please try again</string>
+    <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 
 </resources>
