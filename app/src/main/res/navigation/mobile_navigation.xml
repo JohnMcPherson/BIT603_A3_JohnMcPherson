@@ -22,4 +22,8 @@
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.InventoryFragment"
         android:label="@string/menu_inventory"
         tools:layout="@layout/fragment_inventory" />
+    <fragment
+        android:id="@+id/itemDetailHostFragment"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.ItemDetailHostFragment"
+        android:label="ItemDetailHostFragment" />
 </navigation>
