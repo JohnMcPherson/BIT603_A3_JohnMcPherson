@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_users"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UsersFragment"
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_users" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_inventory"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.InventoryFragment"
+        android:label="@string/menu_inventory"
+        tools:layout="@layout/fragment_inventory" />
 </navigation>
