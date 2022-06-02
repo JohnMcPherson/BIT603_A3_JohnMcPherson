@@ -14,7 +14,7 @@
             android:id="@+id/nav_inventory"
             android:title="@string/menu_inventory" />
         <item
-            android:id="@+id/nav_graph"
+            android:id="@+id/nav_item_detail_host"
             android:title="Detail View" />
     </group>
 </menu>
