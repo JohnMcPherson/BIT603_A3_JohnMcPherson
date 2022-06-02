@@ -21,6 +21,9 @@
     <string name="delete_user_details_required_header">Please enter</string>
     <string name="delete_user_user_field_name">user name</string>
     <string name="delete__user_error_unable_to_delete">Sorry. We cannot find that user. Please try again</string>
+    <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
