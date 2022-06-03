@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UsersFragment"
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_users" />
+
+    <fragment
+        android:id="@+id/nav_inventory"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.InventoryFragment"
+        android:label="@string/menu_inventory"
+        tools:layout="@layout/fragment_inventory" />
+    <fragment
+        android:id="@+id/nav_item_detail_host"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.ItemDetailHostFragment"
+        android:label="Item Detail"
+        tools:layout="@layout/fragment_inventory" />
+    <include app:graph="@navigation/phone_primary_details_nav_graph" />
+    <include app:graph="@navigation/sw600_primary_details_sub_nav_graph" />
+</navigation>
