@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout-sw600dp/fragment_item_list.xml" value="0.2671875" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/activity_item_detail.xml" value="0.17325227963525835" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.35778985507246375" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/fragment_gallery.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/fragment_home.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/fragment_item_detail.xml" value="0.21251266464032423" />
+        <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/fragment_item_list.xml" value="0.35625" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/fragment_slideshow.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/item_list_content.xml" value="0.17325227963525835" />
         <entry key="..\:/Users/johnm/StudioProjects/BIT603_A3_JohnMcPherson/app/src/main/res/layout/nav_header_navigation_drawer.xml" value="0.35778985507246375" />
