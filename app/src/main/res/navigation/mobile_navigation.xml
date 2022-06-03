@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/nav_item_detail_host"
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.ItemDetailHostFragment"
-        android:label="@string/menu_inventory"
+        android:label="Item Detail"
         tools:layout="@layout/fragment_inventory" />
     <include app:graph="@navigation/phone_primary_details_nav_graph" />
     <include app:graph="@navigation/sw600_primary_details_sub_nav_graph" />
