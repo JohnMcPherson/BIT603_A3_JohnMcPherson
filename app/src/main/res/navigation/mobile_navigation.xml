@@ -40,6 +40,4 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
-    <include app:graph="@navigation/phone_primary_details_nav_graph" />
-    <include app:graph="@navigation/sw600_primary_details_sub_nav_graph" />
 </navigation>
