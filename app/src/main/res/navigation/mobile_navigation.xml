@@ -40,16 +40,6 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/fragment_item_detail"
-        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailFragment"
-        android:label="@string/title_item_detail"
-        tools:layout="@layout/fragment_item_detail">
-        <argument
-            android:name="item_id"
-            android:defaultValue=""
-            app:argType="string" />
-    </fragment>
     <include app:graph="@navigation/phone_primary_details_nav_graph" />
     <include app:graph="@navigation/sw600_primary_details_sub_nav_graph" />
 </navigation>
