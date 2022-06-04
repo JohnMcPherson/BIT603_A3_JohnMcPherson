@@ -5,7 +5,7 @@
     android:id="@+id/item_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemDetailHostActivity"
+    tools:context=".ItemDetailFragment"
     tools:ignore="MergeRootFrame">
 
     <androidx.core.widget.NestedScrollView
@@ -62,6 +62,7 @@
         android:layout_marginBottom="16dp"
         app:layout_anchor="@+id/item_detail_scroll_view"
         app:layout_anchorGravity="top|end"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+        app:srcCompat="@android:drawable/stat_notify_chat"
+        android:layout_marginRight="@dimen/fab_margin" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
