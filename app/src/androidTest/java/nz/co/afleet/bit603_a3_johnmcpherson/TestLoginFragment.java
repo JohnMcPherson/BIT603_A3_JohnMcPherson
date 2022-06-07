@@ -1,8 +1,12 @@
 package nz.co.afleet.bit603_a3_johnmcpherson;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.View;
 
+import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -29,13 +33,19 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
  */
 @RunWith(AndroidJUnit4.class)
 public class TestLoginFragment {
+    FragmentScenario<LoginFragment> loginFragmentScenario;
+    Context context;
     ViewInteraction viewInteractionUserName;
     ViewInteraction viewInteractionPassword;
 
 
     @Before
     public void launchFragment() {
-        androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
+        loginFragmentScenario = androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
+        // we need the context to support finding a colour from a resource id
+        loginFragmentScenario.onFragment(action ->{
+            context = action.getContext();
+        });
         viewInteractionUserName = onView(withId(R.id.editTextUserName));
         viewInteractionPassword = onView(withId(R.id.editTextPassword));
     }
@@ -67,14 +77,11 @@ public class TestLoginFragment {
     public void testMandatoryIndicators() {
         testMandatoryIndicatorIsCorrect(R.id.mandatoryUser);
         testMandatoryIndicatorIsCorrect(R.id.mandatoryPassword);
-        confirmErrorMessage("");
     }
 
     private void testMandatoryIndicatorIsCorrect(int indicatorViewId) {
         confirmTextViewTextIsCorrect(indicatorViewId, "*");
-        // similar to confirmTextViewTextIsCorrect, but using hasTextColor()
-
-        onView(withId(indicatorViewId)).check(matches(hasTextColor(Color.RED)));
+        // colour not tested
     }
 
     @Test
@@ -87,7 +94,7 @@ public class TestLoginFragment {
 
         //click the login button and check initial error message
         clickLoginButton();
-        confirmErrorMessage("Please enter your User Name and Password");
+        confirmErrorMessage("Please enter your User Name and Password"); // Current Problem
 
         //enter a user name and check missing password message
         setUserName(ZACK);
