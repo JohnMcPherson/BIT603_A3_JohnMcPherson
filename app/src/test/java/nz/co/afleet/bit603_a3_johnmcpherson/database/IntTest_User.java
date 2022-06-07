@@ -24,7 +24,7 @@ public class IntTest_User {
 
     // field visibility is default, to allow reuse from other test files
     static final String JOHN = "John Doe";
-    static final String JOHN_PASSWORD = "hisPassowrd";
+    static final String JOHN_PASSWORD = "hisPassword";
 
     private static final String JOHN_DATE_OF_BIRTH = "20/12/1996";
     final static String JOHN_EMPLOYEE_NUMBER = "K004";

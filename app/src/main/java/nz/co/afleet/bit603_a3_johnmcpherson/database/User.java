@@ -247,4 +247,15 @@ public class User {
         }
     }
 
+    /**
+     * used for testing
+     * @param otherObject
+     * @return
+     */
+    @Override
+    public boolean equals(Object otherObject) {
+        if (!(otherObject instanceof User)) return false; // not of the right type
+        User otherUser = (User) otherObject; // we know otherObject is a User
+        return (this.getName().equals(otherUser.getName())); // if it's the same name, we treat it as the same user
+    }
 }
