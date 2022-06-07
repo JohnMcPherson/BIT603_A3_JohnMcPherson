@@ -38,6 +38,8 @@ public class TestLoginFragment {
     ViewInteraction viewInteractionUserName;
     ViewInteraction viewInteractionPassword;
 
+    final String admin = "Admin";
+    final String ADMIN_PASSWORD = "CookieManagement84";
 
     @Before
     public void launchFragment() {
@@ -84,10 +86,7 @@ public class TestLoginFragment {
     }
 
     @Test
-    public void errorMessages_areCorrect() {
-        final String ADMIN = "Admin";
-        final String ADMIN_PASSWORD = "CookieManagement84";
-
+    public void errorMessagesAreCorrect_NotLoggedIn() {
         // check our starting point
         confirmErrorMessage("");
 
@@ -96,9 +95,9 @@ public class TestLoginFragment {
         confirmErrorMessage("Please enter your user name and password");
 
         //enter a user name and check missing password message
-        setUserName(ADMIN);
+        setUserName(admin);
         clickLoginButton();
-        confirmErrorMessage("Please enter your Password"); // Current Problem
+        confirmErrorMessage("Please enter your password");
 
         //enter an incorrect password and confirm error message
         setPassword("junkpassword");
@@ -108,14 +107,16 @@ public class TestLoginFragment {
         // clear the user name and check missing user name message
         setUserName("");
         clickLoginButton();
-        confirmErrorMessage("Please enter your User Name");
+        confirmErrorMessage("Please enter your user name"); // Current Problem
+    }
 
+    @Test
+    public void errorMessageCorrectForAdminLogin() {
         // enter the correct user name and password and confirm error message is cleared
-        setUserName(ADMIN);
+        setUserName(admin);
         setPassword(ADMIN_PASSWORD);
         clickLoginButton();
         confirmErrorMessage("");
-        // note that we are not testing for the correct Intent for the Home screen (which would be happening here)
     }
 
     private void clickLoginButton() {
