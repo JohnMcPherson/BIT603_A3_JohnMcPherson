@@ -46,8 +46,10 @@ public class LoginFragment extends Fragment {
 //                loginSuccessful = User.loginUser(editTextUserName.getText().toString(), editTextPassword.getText().toString());
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
-            LinkedHashMap<Integer, Boolean> users = new LinkedHashMap<>();
-            String errorMessage = ErrorMessageGenerator.determineErrorMessage(getContext(), R.string.error_incorrect_login, R.string.login_error_header, users, loginSuccessful);
+            LinkedHashMap<Integer, Boolean> fieldNamesWithIsFilled = new LinkedHashMap<>();
+            fieldNamesWithIsFilled.put(R.string.login_user_field_name, false);
+            fieldNamesWithIsFilled.put(R.string.login_password_field_name, false);
+            String errorMessage = ErrorMessageGenerator.determineErrorMessage(getContext(), R.string.error_incorrect_login, R.string.login_error_header, fieldNamesWithIsFilled, loginSuccessful);
             textViewErrorMessage.setText(errorMessage);
 
             // launch the Main Activity (if we have a successful login)

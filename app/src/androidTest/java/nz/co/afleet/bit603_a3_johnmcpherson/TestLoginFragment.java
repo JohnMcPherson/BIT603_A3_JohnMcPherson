@@ -93,12 +93,12 @@ public class TestLoginFragment {
 
         //click the login button and check initial error message
         clickLoginButton();
-        confirmErrorMessage("Please enter your User Name and Password"); // Current Problem
+        confirmErrorMessage("Please enter your user name and password");
 
         //enter a user name and check missing password message
         setUserName(ADMIN);
         clickLoginButton();
-        confirmErrorMessage("Please enter your Password");
+        confirmErrorMessage("Please enter your Password"); // Current Problem
 
         //enter an incorrect password and confirm error message
         setPassword("junkpassword");
