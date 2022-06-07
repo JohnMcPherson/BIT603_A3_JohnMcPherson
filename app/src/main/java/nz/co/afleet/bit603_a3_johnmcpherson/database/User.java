@@ -252,7 +252,7 @@ public class User {
     }
 
     /**
-     * used for testing
+     * used for TESTING
      * @param otherObject
      * @return
      */

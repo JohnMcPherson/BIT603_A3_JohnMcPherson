@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
@@ -30,14 +31,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         setWelcomeMessage();
+        setupLogoutButton();
 
         return root;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 
     private void setWelcomeMessage() {
@@ -50,5 +46,20 @@ public class HomeFragment extends Fragment {
 
             // no requirement for text colour
         }
+    }
+
+    private void setupLogoutButton() {
+        binding.buttonLogout.setOnClickListener(view -> {
+            // Logout
+            User.logout();
+            // Navigate to Login
+            Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_login,null);
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
