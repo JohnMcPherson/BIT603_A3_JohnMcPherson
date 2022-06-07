@@ -1,6 +1,7 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.database;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -21,13 +22,15 @@ public class IntTest_User {
     private Application application;
     ApplicationDatabase inventoryDatabase;
 
-    private final String JOHN = "John Doe";
-    private final String JOHN_PASSWORD = "hisPassowrd";
-    private final String JOHN_DATE_OF_BIRTH = "20/12/1996";
-    private final String JOHN_EMPLOYEE_NUMBER = "K004";
-    private final String JOHN_PHONE_NUMBER = "04 498 2168";
-    private final String JOHN_ADDRESS = "14 Avery Street, Lower Hutt, 5012";
-    private final  boolean JOHN_IS_ADMIN = false;
+    // field visibility is default, to allow reuse from other test files
+    static final String JOHN = "John Doe";
+    static final String JOHN_PASSWORD = "hisPassowrd";
+
+    private static final String JOHN_DATE_OF_BIRTH = "20/12/1996";
+    final static String JOHN_EMPLOYEE_NUMBER = "K004";
+    private static final String JOHN_PHONE_NUMBER = "04 498 2168";
+    private static final String JOHN_ADDRESS = "14 Avery Street, Lower Hutt, 5012";
+    private static final  boolean JOHN_IS_ADMIN = false;
 
     @Before
     public void initialiseApplicationAndDatabase() {
@@ -47,8 +50,13 @@ public class IntTest_User {
         assertEquals(userJohn.isAdmin(), JOHN_IS_ADMIN);
     }
 
-    private User createStandardUserJohn() {
-        return User.createUser( application,
+   private User createStandardUserJohn() {
+        return createStandardUser(application);
+   }
+
+    // default visibility so we can reuse for testing login
+    static User createStandardUser(Context context) {
+        return User.createUser( context,
                                 JOHN,
                                 JOHN_PASSWORD,
                                 JOHN_DATE_OF_BIRTH,

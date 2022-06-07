@@ -125,6 +125,10 @@ public class User {
         return applicationDatabase.daoUser();
     }
 
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
+
     public int getId() {
         return id;
     }
