@@ -11,13 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator;
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentInventoryBinding;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
