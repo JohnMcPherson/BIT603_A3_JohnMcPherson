@@ -1,25 +1,22 @@
-package nz.co.afleet.bit603_a3_johnmcpherson.ui.login;
+package nz.co.afleet.bit603_a3_johnmcpherson.ui;
 
 import android.content.Context;
-import android.view.View;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
-import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
+import nz.co.afleet.bit603_a3_johnmcpherson.ui.TestUtilities;
+import nz.co.afleet.bit603_a3_johnmcpherson.ui.login.LoginFragment;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
@@ -32,13 +29,10 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(AndroidJUnit4.class)
 public class TestLoginFragment {
-    FragmentScenario<LoginFragment> loginFragmentScenario;
-    Context context;
-    ViewInteraction viewInteractionUserName;
-    ViewInteraction viewInteractionPassword;
-
-    final String ADMIN = "Admin";
-    final String ADMIN_PASSWORD = "CookieManagement84";
+    private FragmentScenario<LoginFragment> loginFragmentScenario;
+    private Context context;
+    private ViewInteraction viewInteractionUserName;
+    private ViewInteraction viewInteractionPassword;
 
     @Before
     public void launchFragment() {
@@ -53,23 +47,16 @@ public class TestLoginFragment {
     @Test
     public void testLoginFragment() {
         androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
-        confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
-        confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
-        confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
-    }
-
-    public static void confirmTextViewTextIsCorrect(int viewId, String expectedText) {
-        // using View Matcher and ViewInteraction to do the check
-        Matcher<View> viewMatcher = withId(viewId);
-        ViewInteraction viewInteraction = onView(viewMatcher);
-        viewInteraction.check(matches(withText(expectedText)));
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
     }
 
     @Test
     public void initialText_isCorrect() {
-        confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
-        confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
-        confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
         confirmErrorMessage("");
     }
 
@@ -80,7 +67,7 @@ public class TestLoginFragment {
     }
 
     private void testMandatoryIndicatorIsCorrect(int indicatorViewId) {
-        confirmTextViewTextIsCorrect(indicatorViewId, "*");
+        TestUtilities.confirmTextViewTextIsCorrect(indicatorViewId, "*");
         // colour not tested
     }
 
@@ -94,6 +81,7 @@ public class TestLoginFragment {
         confirmErrorMessage("Please enter your user name and password");
 
         //enter a user name and check missing password message
+        String ADMIN = "Admin";
         setUserName(ADMIN);
         clickLoginButton();
         confirmErrorMessage("Please enter your password");
@@ -127,19 +115,15 @@ public class TestLoginFragment {
     }
 
     private void setUserName(String userName) {
-        setViewInteractionText(viewInteractionUserName, userName);
+        TestUtilities.setViewInteractionText(viewInteractionUserName, userName);
     }
 
     private void setPassword(String password) {
-        setViewInteractionText(viewInteractionPassword, password);
-    }
-
-    private static void setViewInteractionText(ViewInteraction viewInteraction, String text) {
-        viewInteraction.perform(replaceText(text));
+        TestUtilities.setViewInteractionText(viewInteractionPassword, password);
     }
 
     private void confirmErrorMessage(String requiredText) {
-        confirmTextViewTextIsCorrect(R.id.textErrorMessage, requiredText);
+        TestUtilities.confirmTextViewTextIsCorrect(R.id.textErrorMessage, requiredText);
     }
 
 }
