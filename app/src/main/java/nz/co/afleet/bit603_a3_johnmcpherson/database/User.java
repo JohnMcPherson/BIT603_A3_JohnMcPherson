@@ -247,6 +247,10 @@ public class User {
         }
     }
 
+    public static void logout() {
+        // loggedInUser = null;
+    }
+
     /**
      * used for testing
      * @param otherObject
