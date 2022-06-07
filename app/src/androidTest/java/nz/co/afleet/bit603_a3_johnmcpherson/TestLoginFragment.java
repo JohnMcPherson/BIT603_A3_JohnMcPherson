@@ -42,7 +42,6 @@ public class TestLoginFragment {
     @Before
     public void launchFragment() {
         loginFragmentScenario = androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
-        // we need the context to support finding a colour from a resource id
         loginFragmentScenario.onFragment(action ->{
             context = action.getContext();
         });
@@ -52,7 +51,7 @@ public class TestLoginFragment {
 
     @Test
     public void testLoginFragment() {
-//        FragmentScenario fragmentScenario = androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
+        androidx.fragment.app.testing.FragmentScenario.launchInContainer(LoginFragment.class);
         confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
         confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
         confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
@@ -86,8 +85,8 @@ public class TestLoginFragment {
 
     @Test
     public void errorMessages_areCorrect() {
-        final String ZACK = "Zack";
-        final String ZACK_PASSWORD = "Elephant";
+        final String ADMIN = "Admin";
+        final String ADMIN_PASSWORD = "CookieManagement84";
 
         // check our starting point
         confirmErrorMessage("");
@@ -97,7 +96,7 @@ public class TestLoginFragment {
         confirmErrorMessage("Please enter your User Name and Password"); // Current Problem
 
         //enter a user name and check missing password message
-        setUserName(ZACK);
+        setUserName(ADMIN);
         clickLoginButton();
         confirmErrorMessage("Please enter your Password");
 
@@ -112,8 +111,8 @@ public class TestLoginFragment {
         confirmErrorMessage("Please enter your User Name");
 
         // enter the correct user name and password and confirm error message is cleared
-        setUserName(ZACK);
-        setPassword(ZACK_PASSWORD);
+        setUserName(ADMIN);
+        setPassword(ADMIN_PASSWORD);
         clickLoginButton();
         confirmErrorMessage("");
         // note that we are not testing for the correct Intent for the Home screen (which would be happening here)
