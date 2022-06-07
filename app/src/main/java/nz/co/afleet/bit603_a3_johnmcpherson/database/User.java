@@ -16,6 +16,7 @@ import java.util.List;
         unique = true)})
 public class User {
 
+    private static User loggedInUser;
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
@@ -191,8 +192,8 @@ public class User {
     }
 
 
-    public static ArrayList<User> getUsers(Application application) {
-        ApplicationDatabase applicationDatabasee = ApplicationDatabase.getInstance(application);
+    public static ArrayList<User> getUsers(Context context) {
+        ApplicationDatabase applicationDatabasee = ApplicationDatabase.getInstance(context);
         DaoUser daoUser = applicationDatabasee.daoUser();
         ArrayList<User> users = new ArrayList<>(daoUser.getUsers());
         users.add(getDefaultAdminUser());
@@ -216,4 +217,30 @@ public class User {
                 "", "", "", "",
                 true);
     }
+
+    // find a User, based on userName
+    public static User find(Context context, String userName) {
+        ArrayList<User> users = getUsers(context);
+        User returnValue = null;
+        for (User userToCheck: users) {
+            if (userToCheck.getName().equals(userName)) {
+                returnValue = userToCheck;
+                break; // we have found a matching user, so stop looking
+            }
+        }
+        return returnValue;
+    }
+
+    public static boolean loginUser(Context context, String userName, String password) {
+        loggedInUser = null; // if we are trying to log in, we want to ensure that any existing users are logged out
+        User user = find(context, userName);
+        if (user == null) return false;
+        if (user.getPassword().equals(password)) {
+            loggedInUser = user;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

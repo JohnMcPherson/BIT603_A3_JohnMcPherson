@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
 
             if (hasUserName && hasPassword) {
                 // try to login
-//                loginSuccessful = User.loginUser(editTextUserName.getText().toString(), editTextPassword.getText().toString());
+                loginSuccessful = User.loginUser(getContext(), editTextUserName.getText().toString(), editTextPassword.getText().toString());
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
             LinkedHashMap<Integer, Boolean> fieldNamesWithIsFilled = new LinkedHashMap<>();
