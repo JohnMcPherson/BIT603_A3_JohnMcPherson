@@ -248,7 +248,7 @@ public class User {
     }
 
     public static void logout() {
-        // loggedInUser = null;
+        loggedInUser = null;
     }
 
     /**
