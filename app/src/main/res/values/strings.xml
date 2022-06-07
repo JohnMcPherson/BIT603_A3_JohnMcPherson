@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BIT603_A3_JohnMcPherson</string>
+    <string name="app_name">Kiwi Cookies and Cakes - Inventory</string>
 
     <!-- login error message strings -->
     <string name="login_details_required_header">Please enter your</string>
@@ -21,7 +21,9 @@
     <string name="delete_user_details_required_header">Please enter</string>
     <string name="delete_user_user_field_name">user name</string>
     <string name="delete__user_error_unable_to_delete">Sorry. We cannot find that user. Please try again</string>
-    <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
+
+    <!--Added automatically by Android Studio
+    --><string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
@@ -35,5 +37,43 @@
     <string name="menu_home">Home</string>
     <string name="menu_users">Users</string>
     <string name="menu_inventory">Inventory</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- miscellaneous-->
+    <string name="mandatory_indicator">*</string>
+
+    <!-- from assignment 2 -->
+    <string name="user_label">User</string>
+    <string name="password_label">Password</string>
+    <string name="login_button_label">Login</string>
+    <string name="login_error_header">Please enter your</string>
+    <string name="login_error_user_name">User Name</string>
+    <string name="login_error_password">Password</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_home_header">Home</string>
+    <string name="tab_text_inventory">Inventory</string>
+    <string name="logout">Logout</string>
+    <string name="welcome_message_header">Welcome</string>
+    <string name="add_inventory_title">Add Inventory Item</string>
+    <string name="inventory_name_label">Item Name</string>
+    <string name="inventory_quantity_label">Quantity</string>
+    <string name="required">Required</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+
+    <!--add inventory activity strings-->
+    <string name="missing_inventory_details_header">Please enter</string>
+    <string name="missing_inventory_item_name">Item Name</string>
+    <string name="missing_inventory_item_quantity">Quantity</string>
+    <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
+    <string name="added_to_inventory">added to Inventory</string>
+    <string name="discarding_title">Discarding</string>
+    <string name="discard_warning_message">Do you want to discard this draft inventory item?</string>
+    <string name="keep_draft">Keep draft</string>
+    <string name="discard_draft">Discard</string>
+    <string name="inventory_add_cancelled">Discarded draft inventory item</string>
+
 
 </resources>
