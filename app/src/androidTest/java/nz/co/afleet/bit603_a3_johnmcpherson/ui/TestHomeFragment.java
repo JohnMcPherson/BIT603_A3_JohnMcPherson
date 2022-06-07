@@ -24,6 +24,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static nz.co.afleet.bit603_a3_johnmcpherson.ui.TestUtilities.confirmTextViewTextIsCorrect;
 
 /**
  * This series of tests is functionally identical to those conducted in Assignment 1
@@ -51,8 +52,8 @@ public class TestHomeFragment {
     }
 
     @Test
-    public void test() {
-
+    public void testWelcomeMessageIsCorrect() {
+        confirmTextViewTextIsCorrect(R.id.textViewWelcomeMessage, "Welcome Admin");
     }
 
 
