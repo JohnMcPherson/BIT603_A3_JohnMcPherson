@@ -23,7 +23,7 @@ public class IntTest_User {
     ApplicationDatabase inventoryDatabase;
 
     // field visibility is default, to allow reuse from other test files
-    static final String ADMIN = "Admin";
+    public static final String ADMIN = "Admin";
     static final String ADMIN_PASSWORD = "CookieManagement84";
     static final String JOHN = "John Doe";
     static final String JOHN_PASSWORD = "hisPassword";

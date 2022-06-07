@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
+import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -21,6 +22,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This series of tests is functionally identical to those conducted in Assignment 1
@@ -35,7 +37,7 @@ public class TestLoginFragment {
     ViewInteraction viewInteractionUserName;
     ViewInteraction viewInteractionPassword;
 
-    final String admin = "Admin";
+    final String ADMIN = "Admin";
     final String ADMIN_PASSWORD = "CookieManagement84";
 
     @Before
@@ -92,7 +94,7 @@ public class TestLoginFragment {
         confirmErrorMessage("Please enter your user name and password");
 
         //enter a user name and check missing password message
-        setUserName(admin);
+        setUserName(ADMIN);
         clickLoginButton();
         confirmErrorMessage("Please enter your password");
 
@@ -105,15 +107,6 @@ public class TestLoginFragment {
         setUserName("");
         clickLoginButton();
         confirmErrorMessage("Please enter your user name"); // Current Problem
-    }
-
-    @Test
-    public void errorMessageCorrectForAdminLogin() {
-        // enter the correct user name and password and confirm error message is cleared
-        setUserName(admin);
-        setPassword(ADMIN_PASSWORD);
-        clickLoginButton();
-        confirmErrorMessage("");
     }
 
     private void clickLoginButton() {
