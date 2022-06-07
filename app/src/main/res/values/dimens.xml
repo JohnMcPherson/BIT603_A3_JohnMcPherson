@@ -10,4 +10,7 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="container_margin">8dp</dimen>
     <dimen name="container_horizontal_margin">16dp</dimen>
+
+    <!-- text size -->
+    <dimen name="text_size_standard">18sp</dimen>
 </resources>
