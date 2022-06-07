@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +51,10 @@ public class LoginFragment extends Fragment {
             String errorMessage = ErrorMessageGenerator.determineErrorMessage(getContext(), R.string.error_incorrect_login, R.string.login_error_header, fieldNamesWithIsFilled, loginSuccessful);
             textViewErrorMessage.setText(errorMessage);
 
-            // launch the Main Activity (if we have a successful login)
+            // navigate to HomeFragment (if we have a successful login)
+            // (R.id.action_nav_login_to_nav_home is the path defined in the navigation graph)
             if (loginSuccessful) {
-//                launchMainActivity();
+                Navigation.findNavController(v).navigate(R.id.action_nav_login_to_nav_home,null);
             }
 
         });
