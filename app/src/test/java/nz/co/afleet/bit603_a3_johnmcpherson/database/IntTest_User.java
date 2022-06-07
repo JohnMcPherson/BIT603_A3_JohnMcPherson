@@ -29,10 +29,10 @@ public class IntTest_User {
     static final String JOHN_PASSWORD = "hisPassword";
 
     private static final String JOHN_DATE_OF_BIRTH = "20/12/1996";
-    final static String JOHN_EMPLOYEE_NUMBER = "K004";
+    private static final String JOHN_EMPLOYEE_NUMBER = "K004";
     private static final String JOHN_PHONE_NUMBER = "04 498 2168";
     private static final String JOHN_ADDRESS = "14 Avery Street, Lower Hutt, 5012";
-    private static final  boolean JOHN_IS_ADMIN = false;
+    private static final boolean JOHN_IS_ADMIN = false;
 
     @Before
     public void initialiseApplicationAndDatabase() {
