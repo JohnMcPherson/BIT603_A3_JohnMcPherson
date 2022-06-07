@@ -1,13 +1,11 @@
-package nz.co.afleet.bit603_a3_johnmcpherson;
+package nz.co.afleet.bit603_a3_johnmcpherson.ui.login;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build;
 import android.view.View;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.hamcrest.Matcher;
@@ -15,13 +13,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import nz.co.afleet.bit603_a3_johnmcpherson.ui.login.LoginFragment;
+import nz.co.afleet.bit603_a3_johnmcpherson.R;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.hasTextColor;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -47,7 +44,7 @@ public class TestLoginFragment {
         loginFragmentScenario.onFragment(action ->{
             context = action.getContext();
         });
-        viewInteractionUserName = onView(withId(R.id.editTextUserName));
+        viewInteractionUserName = onView(ViewMatchers.withId(R.id.editTextUserName));
         viewInteractionPassword = onView(withId(R.id.editTextPassword));
     }
 
