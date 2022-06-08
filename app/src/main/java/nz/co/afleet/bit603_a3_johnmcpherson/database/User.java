@@ -214,7 +214,8 @@ public class User {
 
     private static User getDefaultAdminUser() {
         String DEFAULT_ADMIN = "Admin";
-        String DEFAULT_ADMIN_PASSWORD = "CookieManagement84";
+        // TODO change password back to CookieManagement84
+        String DEFAULT_ADMIN_PASSWORD = "84";
         return new User(
                 DEFAULT_ADMIN,
                 DEFAULT_ADMIN_PASSWORD,

@@ -1,7 +1,5 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
+import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.UserDetailsBinding;
 import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
 
 public class UserRecyclerViewAdapter
         extends RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderContent.PlaceholderItem> mUserList;
+    private final List<User> mUserList;
     private final View mUserDetailFragmentContainer;
 
-    UserRecyclerViewAdapter(List<PlaceholderContent.PlaceholderItem> users,
+    UserRecyclerViewAdapter(List<User> users,
                             View userDetailFragmentContainer) {
         mUserList = users;
         mUserDetailFragmentContainer = userDetailFragmentContainer;
@@ -42,7 +41,7 @@ public class UserRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.textViewUserName.setText(mUserList.get(position).content);
+        holder.textViewUserName.setText(mUserList.get(position).getName());
 
         holder.itemView.setTag(mUserList.get(position));
         holder.itemView.setOnClickListener(itemView -> {
@@ -74,33 +73,6 @@ public class UserRecyclerViewAdapter
                 return true;
             });
         }
-        holder.itemView.setOnLongClickListener(v -> {
-            // Setting the item id as the clip data so that the drop target is able to
-            // identify the id of the content
-            ClipData.Item clipItem = new ClipData.Item(mUserList.get(position).id);
-            ClipData dragData = new ClipData(
-                    ((PlaceholderContent.PlaceholderItem) v.getTag()).content,
-                    new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN},
-                    clipItem
-            );
-
-            if (Build.VERSION.SDK_INT >= 24) {
-                v.startDragAndDrop(
-                        dragData,
-                        new View.DragShadowBuilder(v),
-                        null,
-                        0
-                );
-            } else {
-                v.startDrag(
-                        dragData,
-                        new View.DragShadowBuilder(v),
-                        null,
-                        0
-                );
-            }
-            return true;
-        });
     }
 
     @Override
@@ -117,4 +89,6 @@ public class UserRecyclerViewAdapter
         }
 
     }
+
+
 }
