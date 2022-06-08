@@ -76,13 +76,13 @@ public class UserListFragment extends Fragment {
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<PlaceholderContent.PlaceholderItem> mValues;
-        private final View mItemDetailFragmentContainer;
+        private final List<PlaceholderContent.PlaceholderItem> mUserList;
+        private final View mUserDetailFragmentContainer;
 
-        SimpleItemRecyclerViewAdapter(List<PlaceholderContent.PlaceholderItem> items,
-                                      View itemDetailFragmentContainer) {
-            mValues = items;
-            mItemDetailFragmentContainer = itemDetailFragmentContainer;
+        SimpleItemRecyclerViewAdapter(List<PlaceholderContent.PlaceholderItem> users,
+                                      View userDetailFragmentContainer) {
+            mUserList = users;
+            mUserDetailFragmentContainer = userDetailFragmentContainer;
         }
 
         @Override
@@ -96,17 +96,16 @@ public class UserListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.textViewUserName.setText(mUserList.get(position).content);
 
-            holder.itemView.setTag(mValues.get(position));
+            holder.itemView.setTag(mUserList.get(position));
             holder.itemView.setOnClickListener(itemView -> {
                 PlaceholderContent.PlaceholderItem item =
                         (PlaceholderContent.PlaceholderItem) itemView.getTag();
                 Bundle arguments = new Bundle();
                 arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.id);
-                if (mItemDetailFragmentContainer != null) {
-                    Navigation.findNavController(mItemDetailFragmentContainer)
+                if (mUserDetailFragmentContainer != null) {
+                    Navigation.findNavController(mUserDetailFragmentContainer)
                             .navigate(R.id.sw600_fragment_user_detail, arguments);
                 } else {
                     Navigation.findNavController(itemView).navigate(R.id.show_item_detail, arguments);
@@ -132,7 +131,7 @@ public class UserListFragment extends Fragment {
             holder.itemView.setOnLongClickListener(v -> {
                 // Setting the item id as the clip data so that the drop target is able to
                 // identify the id of the content
-                ClipData.Item clipItem = new ClipData.Item(mValues.get(position).id);
+                ClipData.Item clipItem = new ClipData.Item(mUserList.get(position).id);
                 ClipData dragData = new ClipData(
                         ((PlaceholderContent.PlaceholderItem) v.getTag()).content,
                         new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN},
@@ -160,17 +159,15 @@ public class UserListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return mUserList.size();
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
-            final TextView mContentView;
+            final TextView textViewUserName;
 
             ViewHolder(UserDetailsBinding binding) {
                 super(binding.getRoot());
-                mIdView = binding.idText;
-                mContentView = binding.content;
+                textViewUserName = binding.userName;
             }
 
         }
