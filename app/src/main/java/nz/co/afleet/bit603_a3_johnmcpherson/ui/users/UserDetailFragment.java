@@ -1,6 +1,7 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.DragEvent;
 
@@ -59,12 +60,13 @@ public class UserDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
+        Bundle arguments = getArguments();
+        if (arguments.containsKey(ARG_ITEM_ID)) {
             // Load the placeholder content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = User.getById(getContext(), getArguments().getString(ARG_ITEM_ID));
+            Context context = getContext();
+            mItem = User.getById(context, arguments.getString(ARG_ITEM_ID));
         }
     }
 

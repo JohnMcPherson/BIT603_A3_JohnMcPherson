@@ -131,7 +131,11 @@ public class User {
     }
 
     public static User getById(Context context, String stringValueOfId) {
-        return getByid(context, Integer.valueOf(stringValueOfId));
+        if (allValuesArePopulated(stringValueOfId)) {
+            return getByid(context, Integer.valueOf(stringValueOfId));
+        } else {
+            return null;
+        }
     }
 
     private static User getByid(Context context, Integer id) {
