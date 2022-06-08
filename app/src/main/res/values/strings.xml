@@ -24,8 +24,6 @@
 
     <!--Added automatically by Android Studio
     --><string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
-    <string name="title_item_list">Items</string>
-    <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -45,7 +43,8 @@
     <string name="mandatory_indicator">*</string>
 
     <!-- from assignment 2 -->
-    <string name="user_label">User</string>
+    <string name="user_list_label">Users</string>
+    <string name="user_detail_label">User</string>
     <string name="password_label">Password</string>
     <string name="login_button_label">Login</string>
     <string name="login_error_header">Please enter your</string>

@@ -136,7 +136,7 @@ public class UserListFragment extends Fragment {
                 arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.id);
                 if (mItemDetailFragmentContainer != null) {
                     Navigation.findNavController(mItemDetailFragmentContainer)
-                            .navigate(R.id.sw600_fragment_item_detail, arguments);
+                            .navigate(R.id.sw600_fragment_user_detail, arguments);
                 } else {
                     Navigation.findNavController(itemView).navigate(R.id.show_item_detail, arguments);
                 }
