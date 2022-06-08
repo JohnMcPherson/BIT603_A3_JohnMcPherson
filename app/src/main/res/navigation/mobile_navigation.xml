@@ -8,15 +8,15 @@
     <fragment
         android:id="@+id/nav_login"
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_nav_login_to_nav_home"
             app:destination="@id/nav_home" />
         <argument
             android:name="drawer_required"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
     <fragment
