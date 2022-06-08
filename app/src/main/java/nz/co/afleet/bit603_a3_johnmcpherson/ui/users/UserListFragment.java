@@ -35,31 +35,6 @@ import java.util.List;
  */
 public class UserListFragment extends Fragment {
 
-    /**
-     * Method to intercept global key events in the
-     * item list fragment to trigger keyboard shortcuts
-     * Currently provides a toast when Ctrl + Z and Ctrl + F
-     * are triggered
-     */
-    ViewCompat.OnUnhandledKeyEventListenerCompat unhandledKeyEventListenerCompat = (v, event) -> {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_Z && event.isCtrlPressed()) {
-            Toast.makeText(
-                    v.getContext(),
-                    "Undo (Ctrl + Z) shortcut triggered",
-                    Toast.LENGTH_LONG
-            ).show();
-            return true;
-        } else if (event.getKeyCode() == KeyEvent.KEYCODE_F && event.isCtrlPressed()) {
-            Toast.makeText(
-                    v.getContext(),
-                    "Find (Ctrl + F) shortcut triggered",
-                    Toast.LENGTH_LONG
-            ).show();
-            return true;
-        }
-        return false;
-    };
-
     private FragmentItemListBinding binding;
 
     @Override
@@ -74,15 +49,13 @@ public class UserListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ViewCompat.addOnUnhandledKeyEventListener(view, unhandledKeyEventListenerCompat);
-
         RecyclerView recyclerView = binding.itemList;
 
         // Leaving this not using view binding as it relies on if the view is visible the current
         // layout configuration (layout, layout-sw600dp)
         View itemDetailFragmentContainer = view.findViewById(R.id.item_detail_nav_container);
 
-        setupRecyclerView(recyclerView, itemDetailFragmentContainer);
+                                             setupRecyclerView(recyclerView, itemDetailFragmentContainer);
     }
 
     private void setupRecyclerView(
