@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-
 import static nz.co.afleet.bit603_a3_johnmcpherson.database.IntTest_User.ADMIN;
 import static nz.co.afleet.bit603_a3_johnmcpherson.database.IntTest_User.ADMIN_PASSWORD;
 import static nz.co.afleet.bit603_a3_johnmcpherson.database.IntTest_User.JOHN;
@@ -20,7 +19,6 @@ import static nz.co.afleet.bit603_a3_johnmcpherson.database.User.loginUser;
 import static nz.co.afleet.bit603_a3_johnmcpherson.database.User.logout;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 

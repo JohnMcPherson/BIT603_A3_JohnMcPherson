@@ -78,6 +78,7 @@ public class User {
             && !isDuplicateOfUserName(context, name)) {
             newUser = new User(name, password, dateOfBirth, employeeNumber, phoneNumber, address, isAdmin);
             addUserToDatabase(context, newUser);
+            newUser = find(context, name); // we need the instance that is now in the database
         }
         return newUser;
     }
