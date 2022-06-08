@@ -45,8 +45,8 @@ public class UserRecyclerViewAdapter
 
         holder.itemView.setTag(mUserList.get(position));
         holder.itemView.setOnClickListener(itemView -> {
-            User item =
-                    (User) itemView.getTag();
+            Object shouldBeUser = itemView.getTag();
+            User item = (User) shouldBeUser;
             Bundle arguments = new Bundle();
             arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.getId().toString());
             if (mUserDetailFragmentContainer != null) {
