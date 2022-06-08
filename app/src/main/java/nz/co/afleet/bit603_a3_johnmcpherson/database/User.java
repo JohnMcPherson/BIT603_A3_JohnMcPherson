@@ -1,6 +1,5 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.database;
 
-import android.app.Application;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -9,13 +8,13 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
 public class User {
 
+    private static final String DEFAULT_ADMIN = "Admin";
     private static User loggedInUser;
 
     @PrimaryKey(autoGenerate = true)
@@ -196,36 +195,40 @@ public class User {
     }
 
 
-    public static ArrayList<User> getUsers(Context context) {
+    public static List<User> getUsers(Context context) {
         ApplicationDatabase applicationDatabasee = ApplicationDatabase.getInstance(context);
         DaoUser daoUser = applicationDatabasee.daoUser();
-        ArrayList<User> users = new ArrayList<>(daoUser.getUsers());
-        users.add(getDefaultAdminUser());
-        return users;
+        List<User> candidateList = daoUser.getUsers();
+        if (findUserInList(DEFAULT_ADMIN, candidateList) != null) {
+            return candidateList;
+        } else {
+            addDefaultAdminToDatabase(context);
+            return daoUser.getUsers();
+        }
     }
 
     /**
-     * Returns a User with the default admin credentials
-     * ASSUMPTION This user should not be added to the database. A user is not to be created (and added to the database) by the administrator,
-     * unless all fields are non-blank. As we do not have contact etc details for the Admin user, I assume the admin should not be in the database either
-     *
-     * @return
+     * Add the default admin is in the database
+     * ASSUMPTION It is OK for the default admin to not have DOB, employeeNumber etc
      */
-
-    private static User getDefaultAdminUser() {
-        String DEFAULT_ADMIN = "Admin";
-        // TODO change password back to CookieManagement84
+    private static void addDefaultAdminToDatabase(Context context) {
+       // TODO change password back to CookieManagement84
         String DEFAULT_ADMIN_PASSWORD = "84";
-        return new User(
+        User newlyCreatedAdminUser = new User(
                 DEFAULT_ADMIN,
                 DEFAULT_ADMIN_PASSWORD,
                 "", "", "", "",
                 true);
+       addUserToDatabase(context, newlyCreatedAdminUser);
     }
 
     // find a User, based on userName
     public static User find(Context context, String userName) {
-        ArrayList<User> users = getUsers(context);
+        List<User> users = getUsers(context);
+        return findUserInList(userName, users);
+    }
+
+    private static User findUserInList(String userName, List<User> users) {
         User returnValue = null;
         for (User userToCheck: users) {
             if (userToCheck.getName().equals(userName)) {
@@ -261,6 +264,6 @@ public class User {
     public boolean equals(Object otherObject) {
         if (!(otherObject instanceof User)) return false; // not of the right type
         User otherUser = (User) otherObject; // we know otherObject is a User
-        return (this.getName().equals(otherUser.getName())); // if it's the same name, we treat it as the same user
+        return (this.getId() == otherUser.getId()); // if it's the same id, we treat it as the same user
     }
 }
