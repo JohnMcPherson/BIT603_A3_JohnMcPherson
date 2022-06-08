@@ -59,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
                 // display the hamburger/up button by default
                 boolean displayHomeAsUpEnabled = true;
-                // but if we find "drawer_required = false" (as an argument for the fragment), don't display it
-                if (bundle.containsKey("drawer_required") && bundle.get("drawer_required").equals(false)) {
-                    displayHomeAsUpEnabled = false;
+                // but if we find "drawer_required = false" (as an argument for the fragment), don't display the hamburger/up button
+                if (    bundle != null
+                        && bundle.containsKey("drawer_required")
+                        && bundle.get("drawer_required").equals(false)) {
+                            displayHomeAsUpEnabled = false;
                 }
                 Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);;
             }
