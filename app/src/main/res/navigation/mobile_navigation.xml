@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_nav_login_to_nav_home"
             app:destination="@id/nav_home" />
+        <argument
+            android:name="drawer_required"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 
     <fragment
