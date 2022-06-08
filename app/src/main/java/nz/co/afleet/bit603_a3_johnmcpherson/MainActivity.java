@@ -19,19 +19,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.ActivityNavigationDrawerBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.ActivityMainBinding;
 
-public class NavigationDrawerActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityNavigationDrawerBinding binding;
+    private ActivityMainBinding binding;
     DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityNavigationDrawerBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarNavigationDrawer.toolbar);

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BIT603_A3_JohnMcPherson"
         tools:targetApi="31">
         <activity
-            android:name=".NavigationDrawerActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.BIT603_A3_JohnMcPherson.NoActionBar"
             android:exported="true">
             <intent-filter>
