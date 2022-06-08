@@ -5,12 +5,10 @@ import android.content.ClipDescription;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,11 +47,11 @@ public class UserListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = binding.itemList;
+        RecyclerView recyclerView = binding.userList;
 
         // Leaving this not using view binding as it relies on if the view is visible the current
         // layout configuration (layout, layout-sw600dp)
-        View itemDetailFragmentContainer = view.findViewById(R.id.item_detail_nav_container);
+        View itemDetailFragmentContainer = view.findViewById(R.id.user_detail_nav_container);
 
                                              setupRecyclerView(recyclerView, itemDetailFragmentContainer);
     }

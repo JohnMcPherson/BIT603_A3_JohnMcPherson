@@ -9,13 +9,13 @@
     android:layout_marginEnd="@dimen/container_horizontal_margin">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/item_list"
-        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ItemListFragment"
+        android:id="@+id/user_list"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.UserListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailHostActivity"
+        tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.UserListFragment"
         tools:listitem="@layout/user_details" />
 </androidx.constraintlayout.widget.ConstraintLayout>
