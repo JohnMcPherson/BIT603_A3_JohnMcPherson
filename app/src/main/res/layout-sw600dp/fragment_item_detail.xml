@@ -12,5 +12,5 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:textIsSelectable="true"
-        tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailFragment" />
+        tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a3_johnmcpherson;
+package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
 import android.content.ClipData;
 import android.os.Bundle;
@@ -13,16 +13,17 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemDetailBinding;
 
 /**
  * A fragment representing a single Item detail screen.
- * This fragment is either contained in a {@link ItemListFragment}
+ * This fragment is either contained in a {@link UserListFragment}
  * in two-pane mode (on larger screen devices) or self-contained
  * on handsets.
  */
-public class ItemDetailFragment extends Fragment {
+public class UserDetailFragment extends Fragment {
 
     /**
      * The fragment argument representing the item ID that this fragment
@@ -51,7 +52,7 @@ public class ItemDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemDetailFragment() {
+    public UserDetailFragment() {
     }
 
     @Override

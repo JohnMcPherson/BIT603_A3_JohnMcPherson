@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailHostActivity"
-        tools:listitem="@layout/item_list_content" />
+        tools:listitem="@layout/user_details" />
 
     <fragment
         android:id="@+id/item_detail_nav_container"

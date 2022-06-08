@@ -6,7 +6,7 @@
     app:startDestination="@id/sw600_fragment_item_detail">
     <fragment
         android:id="@+id/sw600_fragment_item_detail"
-        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailFragment"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment"
         android:label="@string/title_item_detail"
         tools:layout="@layout/fragment_item_detail">
         <argument

@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a3_johnmcpherson;
+package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -17,8 +17,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemListBinding;
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.ItemListContentBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.UserDetailsBinding;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
 
@@ -28,11 +29,11 @@ import java.util.List;
  * A fragment representing a list of Items. This fragment
  * has different presentations for handset and larger screen devices. On
  * handsets, the fragment presents a list of items, which when touched,
- * lead to a {@link ItemDetailFragment} representing
+ * lead to a {@link UserDetailFragment} representing
  * item details. On larger screens, the Navigation controller presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ItemListFragment extends Fragment {
+public class UserListFragment extends Fragment {
 
     /**
      * Method to intercept global key events in the
@@ -116,8 +117,8 @@ public class ItemListFragment extends Fragment {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            ItemListContentBinding binding =
-                    ItemListContentBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            UserDetailsBinding binding =
+                    UserDetailsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
             return new ViewHolder(binding);
 
         }
@@ -132,7 +133,7 @@ public class ItemListFragment extends Fragment {
                 PlaceholderContent.PlaceholderItem item =
                         (PlaceholderContent.PlaceholderItem) itemView.getTag();
                 Bundle arguments = new Bundle();
-                arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
+                arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.id);
                 if (mItemDetailFragmentContainer != null) {
                     Navigation.findNavController(mItemDetailFragmentContainer)
                             .navigate(R.id.sw600_fragment_item_detail, arguments);
@@ -195,7 +196,7 @@ public class ItemListFragment extends Fragment {
             final TextView mIdView;
             final TextView mContentView;
 
-            ViewHolder(ItemListContentBinding binding) {
+            ViewHolder(UserDetailsBinding binding) {
                 super(binding.getRoot());
                 mIdView = binding.idText;
                 mContentView = binding.content;

@@ -17,5 +17,5 @@
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailHostActivity"
-        tools:listitem="@layout/item_list_content" />
+        tools:listitem="@layout/user_details" />
 </androidx.constraintlayout.widget.ConstraintLayout>
