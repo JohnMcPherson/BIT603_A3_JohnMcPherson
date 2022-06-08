@@ -9,6 +9,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity(tableName = "User", indices = {@Index(value = {"Name"},
         unique = true)})
@@ -127,6 +128,19 @@ public class User {
 
     public static User getLoggedInUser() {
         return loggedInUser;
+    }
+
+    public static User getById(Context context, String stringValueOfId) {
+        return getByid(context, Integer.valueOf(stringValueOfId));
+    }
+
+    private static User getByid(Context context, Integer id) {
+        for (User candidateUser : getUsers(context)) {
+            if (Objects.equals(candidateUser.getId(), id)) {
+                return candidateUser;
+            }
+        }
+        return null;
     }
 
     public Integer getId() {

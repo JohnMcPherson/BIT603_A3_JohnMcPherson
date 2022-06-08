@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
+import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemDetailBinding;
 
@@ -34,14 +35,14 @@ public class UserDetailFragment extends Fragment {
     /**
      * The placeholder content this fragment is presenting.
      */
-    private PlaceholderContent.PlaceholderItem mItem;
+    private User mItem;
     private CollapsingToolbarLayout mToolbarLayout;
     private TextView mTextView;
 
     private final View.OnDragListener dragListener = (v, event) -> {
         if (event.getAction() == DragEvent.ACTION_DROP) {
             ClipData.Item clipDataItem = event.getClipData().getItemAt(0);
-            mItem = PlaceholderContent.ITEM_MAP.get(clipDataItem.getText().toString());
+            mItem = User.getById(getContext(), clipDataItem.getText().toString());
             updateContent();
         }
         return true;
@@ -63,7 +64,7 @@ public class UserDetailFragment extends Fragment {
             // Load the placeholder content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = PlaceholderContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mItem = User.getById(getContext(), getArguments().getString(ARG_ITEM_ID));
         }
     }
 
@@ -91,9 +92,9 @@ public class UserDetailFragment extends Fragment {
 
     private void updateContent() {
         if (mItem != null) {
-            mTextView.setText(mItem.details);
+            mTextView.setText(mItem.getName());
             if (mToolbarLayout != null) {
-                mToolbarLayout.setTitle(mItem.content);
+                mToolbarLayout.setTitle(mItem.getName() + " " + mItem.getPassword());
             }
         }
     }
