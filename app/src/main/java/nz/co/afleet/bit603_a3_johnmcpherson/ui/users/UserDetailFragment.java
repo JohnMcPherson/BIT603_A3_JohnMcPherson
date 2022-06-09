@@ -16,8 +16,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
-import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemDetailBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentUserDetailBinding;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -48,7 +47,7 @@ public class UserDetailFragment extends Fragment {
         }
         return true;
     };
-    private FragmentItemDetailBinding binding;
+    private FragmentUserDetailBinding binding;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -74,7 +73,7 @@ public class UserDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentItemDetailBinding.inflate(inflater, container, false);
+        binding = FragmentUserDetailBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
         mToolbarLayout = rootView.findViewById(R.id.toolbar_layout);

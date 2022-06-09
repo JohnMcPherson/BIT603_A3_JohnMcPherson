@@ -17,7 +17,6 @@ import java.util.List;
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.UserDetailsBinding;
-import nz.co.afleet.bit603_a3_johnmcpherson.placeholder.PlaceholderContent;
 
 public class UserRecyclerViewAdapter
         extends RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder> {
@@ -46,8 +45,7 @@ public class UserRecyclerViewAdapter
 
         holder.itemView.setTag(mUserList.get(position));
         holder.itemView.setOnClickListener(itemView -> {
-            Object shouldBeUser = itemView.getTag();
-            User item = (User) shouldBeUser;
+            User item = (User) itemView.getTag();
             Bundle arguments = new Bundle();
             arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.getId().toString());
             if (mUserDetailFragmentContainer != null) {
@@ -58,23 +56,6 @@ public class UserRecyclerViewAdapter
                 Navigation.findNavController(itemView).navigate(R.id.show_item_detail, arguments);
             }
         });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            /*
-             * Context click listener to handle Right click events
-             * from mice and trackpad input to provide a more native
-             * experience on larger screen devices
-             */
-            holder.itemView.setOnContextClickListener(v -> {
-                PlaceholderContent.PlaceholderItem item =
-                        (PlaceholderContent.PlaceholderItem) holder.itemView.getTag();
-                Toast.makeText(
-                        holder.itemView.getContext(),
-                        "Context click of item " + item.id,
-                        Toast.LENGTH_LONG
-                ).show();
-                return true;
-            });
-        }
     }
 
     @Override

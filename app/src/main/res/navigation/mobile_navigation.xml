@@ -46,7 +46,7 @@
         android:id="@+id/user_detail_fragment"
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment"
         android:label="@string/user_detail_label"
-        tools:layout="@layout/fragment_item_detail">
+        tools:layout="@layout/fragment_user_detail">
         <argument
             android:name="item_id"
             android:defaultValue=""
