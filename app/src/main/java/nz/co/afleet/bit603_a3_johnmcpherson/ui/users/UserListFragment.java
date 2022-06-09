@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemListBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentUserListBinding;
 
 /**
  * A fragment representing a list of users. This fragment
@@ -24,14 +24,14 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentItemListBinding;
  */
 public class UserListFragment extends Fragment {
 
-    private FragmentItemListBinding binding;
+    private FragmentUserListBinding binding;
     private final ArrayList<User> mUsers = new ArrayList<>();
     private UserRecyclerViewAdapter userRecyclerViewAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentItemListBinding.inflate(inflater, container, false);
+        binding = FragmentUserListBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -42,6 +42,7 @@ public class UserListFragment extends Fragment {
         // refresh the user list (that the adapter has access to)
         refreshUserList();
         // and tell the adapter that the list has changed
+        // due to the small amount of data, performance should be fine, and we do not need to respond to specific change events
         userRecyclerViewAdapter.notifyDataSetChanged();
     }
 
@@ -56,11 +57,16 @@ public class UserListFragment extends Fragment {
 
         RecyclerView recyclerView = binding.userList;
 
-        // Leaving this not using view binding as it relies on if the view is visible the current
-        // layout configuration (layout, layout-sw600dp)
-        View itemDetailFragmentContainer = view.findViewById(R.id.user_detail_nav_container);
+/*
+        R.id.user_detail_frag_container is for the fragment that shows user detail on the same
+        screen (layout) as the user list. It is used in the tablet (sw600dpi) version of fragment_user_list.
+        If the current layout does not show details, alongside the user list, there will be no view found
+        and userDetailFragmentContainer will be null.
+        This will be used to control navigation between the list and the detail (whether or not to show a different screen)
+*/
+        View userDetailFragmentContainer = view.findViewById(R.id.user_detail_frag_container);
 
-        setupRecyclerView(recyclerView, itemDetailFragmentContainer);
+        setupRecyclerView(recyclerView, userDetailFragmentContainer);
     }
 
     private void setupRecyclerView(

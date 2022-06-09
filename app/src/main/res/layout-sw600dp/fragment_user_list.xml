@@ -27,8 +27,9 @@
         tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ItemDetailHostActivity"
         tools:listitem="@layout/user_details" />
 
+    <!-- the navigation container used when using Navigation.findNavController(mUserDetailFragmentContainer) -->
     <fragment
-        android:id="@+id/user_detail_nav_container"
+        android:id="@+id/user_detail_frag_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -38,6 +39,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/combined_user_list_and_details_sub_nav_graph" />
+        app:navGraph="@navigation/combined_user_list_and_details_sub_nav_graph"
+        />
+        <!--Note that the R.id.user_detail_frag_container element (above) points to a different navigation graph.
+            This ensures that the navigation drawer works as expected-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
