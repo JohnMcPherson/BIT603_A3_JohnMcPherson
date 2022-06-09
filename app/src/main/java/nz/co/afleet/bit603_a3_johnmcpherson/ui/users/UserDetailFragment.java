@@ -36,17 +36,8 @@ public class UserDetailFragment extends Fragment {
      * The placeholder content this fragment is presenting.
      */
     private User mItem;
-    private CollapsingToolbarLayout mToolbarLayout;
     private TextView mTextView;
 
-    private final View.OnDragListener dragListener = (v, event) -> {
-        if (event.getAction() == DragEvent.ACTION_DROP) {
-            ClipData.Item clipDataItem = event.getClipData().getItemAt(0);
-            mItem = User.getById(getContext(), clipDataItem.getText().toString());
-            updateContent();
-        }
-        return true;
-    };
     private FragmentUserDetailBinding binding;
 
     /**
@@ -76,12 +67,9 @@ public class UserDetailFragment extends Fragment {
         binding = FragmentUserDetailBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
-        mToolbarLayout = rootView.findViewById(R.id.toolbar_layout);
         mTextView = binding.itemDetail;
 
-        // Show the placeholder content as text in a TextView & in the toolbar if available.
         updateContent();
-        rootView.setOnDragListener(dragListener);
         return rootView;
     }
 
@@ -94,9 +82,6 @@ public class UserDetailFragment extends Fragment {
     private void updateContent() {
         if (mItem != null) {
             mTextView.setText(mItem.getName());
-            if (mToolbarLayout != null) {
-                mToolbarLayout.setTitle(mItem.getName() + " " + mItem.getPassword());
-            }
         }
     }
 }
