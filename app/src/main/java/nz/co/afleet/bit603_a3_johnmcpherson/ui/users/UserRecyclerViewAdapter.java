@@ -1,12 +1,10 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -47,7 +45,7 @@ public class UserRecyclerViewAdapter
         holder.itemView.setOnClickListener(itemView -> {
             User item = (User) itemView.getTag();
             Bundle arguments = new Bundle();
-            arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.getId().toString());
+            arguments.putString(UserDetailFragment.ARG_USER_ID, item.getId().toString());
             if (mUserDetailFragmentContainer != null) {
                 NavController navController = Navigation.findNavController(mUserDetailFragmentContainer);
                 navController

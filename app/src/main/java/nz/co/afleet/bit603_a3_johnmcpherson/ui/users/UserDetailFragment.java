@@ -27,10 +27,10 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentUserDetailBindin
 public class UserDetailFragment extends Fragment {
 
     /**
-     * The fragment argument representing the item ID that this fragment
+     * The fragment argument representing the user ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String ARG_USER_ID = "item_id";
 
     /**
      * The placeholder content this fragment is presenting.
@@ -60,12 +60,12 @@ public class UserDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
-        if (arguments.containsKey(ARG_ITEM_ID)) {
+        if (arguments.containsKey(ARG_USER_ID)) {
             // Load the placeholder content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             Context context = getContext();
-            mItem = User.getById(context, arguments.getString(ARG_ITEM_ID));
+            mItem = User.getById(context, arguments.getString(ARG_USER_ID));
         }
     }
 
