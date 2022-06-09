@@ -32,8 +32,6 @@ public class UserListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentItemListBinding.inflate(inflater, container, false);
-
-        userRecyclerViewAdapter = new UserRecyclerViewAdapter(mUsers, binding.userList);
         return binding.getRoot();
 
     }
@@ -69,6 +67,10 @@ public class UserListFragment extends Fragment {
             RecyclerView recyclerView,
             View userDetailFragmentContainer
     ) {
+        userRecyclerViewAdapter = new UserRecyclerViewAdapter(
+                mUsers,
+                userDetailFragmentContainer
+        );
 
         recyclerView.setAdapter(userRecyclerViewAdapter);
     }

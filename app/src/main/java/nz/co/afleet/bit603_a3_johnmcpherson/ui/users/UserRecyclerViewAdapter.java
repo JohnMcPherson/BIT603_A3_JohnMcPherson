@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,8 +51,9 @@ public class UserRecyclerViewAdapter
             Bundle arguments = new Bundle();
             arguments.putString(UserDetailFragment.ARG_ITEM_ID, item.getId().toString());
             if (mUserDetailFragmentContainer != null) {
-                Navigation.findNavController(mUserDetailFragmentContainer)
-                        .navigate(R.id.sw600_fragment_user_detail, arguments);
+                NavController navController = Navigation.findNavController(mUserDetailFragmentContainer);
+                navController
+                        .navigate(R.id.sw600_fragment_item_detail, arguments);
             } else {
                 Navigation.findNavController(itemView).navigate(R.id.show_item_detail, arguments);
             }
