@@ -148,7 +148,7 @@ public class User {
         return null;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

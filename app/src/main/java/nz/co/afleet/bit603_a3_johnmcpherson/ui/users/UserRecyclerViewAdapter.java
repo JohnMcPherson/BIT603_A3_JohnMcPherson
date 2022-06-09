@@ -45,7 +45,7 @@ public class UserRecyclerViewAdapter
         holder.itemView.setOnClickListener(itemView -> {
             User item = (User) itemView.getTag();
             Bundle arguments = new Bundle();
-            arguments.putString(UserDetailFragment.ARG_USER_ID, item.getId().toString());
+            arguments.putString(UserDetailFragment.ARG_USER_ID, Integer.valueOf(item.getId()).toString());
             if (mUserDetailFragmentContainer != null) {
                 NavController navController = Navigation.findNavController(mUserDetailFragmentContainer);
                 navController
