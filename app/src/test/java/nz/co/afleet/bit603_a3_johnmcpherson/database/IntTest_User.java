@@ -25,7 +25,7 @@ public class IntTest_User {
     // field visibility is default, to allow reuse from other test files
     public static final String ADMIN = "Admin";
     // TODO change password back to "CookieManagement84";
-    static final String ADMIN_PASSWORD = "84";
+    static final String ADMIN_PASSWORD = "CookieManagement84";
     static final String JOHN = "John Doe";
     static final String JOHN_PASSWORD = "hisPassword";
 
