@@ -16,6 +16,7 @@ import java.util.Objects;
 public class User {
 
     private static final String DEFAULT_ADMIN = "Admin";
+    private static final String DEFAULT_ADMIN_PASSWORD = "CookieManagement84";
     private static User loggedInUser;
 
     @PrimaryKey(autoGenerate = true)
@@ -232,8 +233,6 @@ public class User {
      * ASSUMPTION It is OK for the default admin to not have DOB, employeeNumber etc
      */
     private static void addDefaultAdminToDatabase(Context context) {
-       // TODO change password back to CookieManagement84
-        String DEFAULT_ADMIN_PASSWORD = "84";
         User newlyCreatedAdminUser = new User(
                 DEFAULT_ADMIN,
                 DEFAULT_ADMIN_PASSWORD,
