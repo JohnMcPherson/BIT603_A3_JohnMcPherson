@@ -67,7 +67,7 @@ public class UserDetailFragment extends Fragment {
         binding = FragmentUserDetailBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
-        mTextView = binding.itemDetail;
+        mTextView = binding.textUserName;
 
         updateContent();
         return rootView;
