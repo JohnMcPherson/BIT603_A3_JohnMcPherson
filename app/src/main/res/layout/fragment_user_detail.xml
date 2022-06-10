@@ -4,8 +4,7 @@
     android:id="@+id/item_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.UserDetailFragment"
-    tools:ignore="MergeRootFrame">
+    tools:context=".ui.users.UserDetailFragment">
 
         <TextView
             android:id="@+id/item_detail"
