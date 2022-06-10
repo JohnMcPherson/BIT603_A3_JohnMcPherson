@@ -28,7 +28,7 @@
             android:layout_marginTop="16dp"
             android:text="dummy"
             android:textIsSelectable="false"
-            app:layout_constraintStart_toStartOf="@id/barrierVertical"
+            app:layout_constraintStart_toEndOf="@+id/barrierVertical"
             app:layout_constraintTop_toTopOf="parent"
             tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
 
@@ -41,6 +41,61 @@
             app:constraint_referenced_ids="textUserNameLabel"
             tools:layout_editor_absoluteX="223dp"
             tools:layout_editor_absoluteY="160dp" />
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Password"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textUserName" />
+
+        <TextView
+            android:id="@+id/textDateOfBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="DoB"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+
+        <TextView
+            android:id="@+id/textEmployeeNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Employee Number"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textDateOfBirth" />
+
+        <TextView
+            android:id="@+id/textPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Phone Number"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textEmployeeNumber" />
+
+        <TextView
+            android:id="@+id/textAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Address"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textPhoneNumber" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
