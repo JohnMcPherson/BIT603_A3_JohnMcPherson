@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="textUserNameLabel"
+            app:constraint_referenced_ids="textUserNameLabel, textPasswordLabel, textDobLabel, textEmployeeNumberLabel, textPhoneNumberLabel, textAddressLabel"
             tools:layout_editor_absoluteX="223dp"
             tools:layout_editor_absoluteY="160dp" />
 
