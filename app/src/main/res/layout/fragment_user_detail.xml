@@ -12,10 +12,7 @@
             style="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="@dimen/container_horizontal_margin"
-            android:paddingTop="16dp"
-            android:paddingEnd="@dimen/container_horizontal_margin"
-            android:paddingBottom="16dp"
+            android:padding="16dp"
             android:textIsSelectable="true"
             tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
 
