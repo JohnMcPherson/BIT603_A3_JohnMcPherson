@@ -57,7 +57,7 @@ public class ShowUsers {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("84"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("CookieManagement84"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.buttonLogin), withText("Login"),
