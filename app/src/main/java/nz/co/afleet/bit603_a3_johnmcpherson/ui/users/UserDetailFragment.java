@@ -31,7 +31,6 @@ public class UserDetailFragment extends Fragment {
      * The placeholder content this fragment is presenting.
      */
     private User mUser;
-    private TextView mTextView;
 
     private FragmentUserDetailBinding binding;
 
@@ -62,8 +61,6 @@ public class UserDetailFragment extends Fragment {
         binding = FragmentUserDetailBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
-        mTextView = binding.textUserName;
-
         updateContent();
         return rootView;
     }
@@ -82,7 +79,12 @@ public class UserDetailFragment extends Fragment {
         } else {
             // We have a selected user, sot display the details
             binding.getRoot().setVisibility(View.VISIBLE);
-            mTextView.setText(mUser.getName());
+            binding.textUserName.setText(mUser.getName());
+            binding.textPassword.setText(mUser.getPassword());
+            binding.textDateOfBirth.setText(mUser.getDateOfBirth());
+            binding.textEmployeeNumber.setText(mUser.getEmployeeNumber());
+            binding.textPhoneNumber.setText(mUser.getPhoneNumber());
+            binding.textAddress.setText(mUser.getAddress());
         }
     }
 }
