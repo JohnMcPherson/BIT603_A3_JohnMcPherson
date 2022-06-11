@@ -40,7 +40,7 @@ public class UserListFragment extends Fragment {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Navigation.findNavController(view).navigate(R.id.action_nav_users_to_addUserFragment,null);
+                Navigation.findNavController(view).navigate(R.id.action_nav_users_to_add_user,null);
 
             }
         });

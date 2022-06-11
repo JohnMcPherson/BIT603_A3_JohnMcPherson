@@ -42,7 +42,7 @@
             android:id="@+id/show_item_detail"
             app:destination="@id/user_detail_fragment" />
         <action
-            android:id="@+id/action_nav_users_to_addUserFragment"
+            android:id="@+id/action_nav_users_to_add_user"
             app:destination="@id/addUserFragment" />
     </fragment>
     <fragment

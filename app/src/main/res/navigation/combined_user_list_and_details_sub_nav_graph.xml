@@ -13,6 +13,14 @@
             android:name="item_id"
             android:defaultValue=""
             app:argType="string" />
+        <action
+            android:id="@+id/action_sw600_fragment_item_detail_to_sw600AddUserFragment"
+            app:destination="@id/sw600AddUserFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/sw600AddUserFragment"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.AddUserFragment"
+        android:label="fragment_add_user"
+        tools:layout="@layout/fragment_add_user" />
 
 </navigation>
