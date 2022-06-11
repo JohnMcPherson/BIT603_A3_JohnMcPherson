@@ -18,4 +18,17 @@
         app:layoutManager="LinearLayoutManager"
         tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.UserListFragment"
         tools:listitem="@layout/user_details" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
