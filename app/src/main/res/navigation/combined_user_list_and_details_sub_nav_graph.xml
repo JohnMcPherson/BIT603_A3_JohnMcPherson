@@ -23,7 +23,7 @@
         android:label="@string/add_user_label"
         tools:layout="@layout/fragment_add_user" >
         <action
-            android:id="@+id/action_nav_from_add_user_to_users"
+            android:id="@+id/action_nav_add_user_to_users"
             app:destination="@id/sw600_fragment_item_detail" />
     </fragment>
 

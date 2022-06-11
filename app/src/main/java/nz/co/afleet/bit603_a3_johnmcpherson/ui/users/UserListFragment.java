@@ -35,7 +35,7 @@ public class UserListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentUserListBinding.inflate(inflater, container, false);
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.fabAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // depending on device size, findNavController() gets the controller for

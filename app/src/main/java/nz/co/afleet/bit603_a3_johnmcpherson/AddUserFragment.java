@@ -10,10 +10,13 @@ package nz.co.afleet.bit603_a3_johnmcpherson;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentNewUserBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +33,8 @@ public class AddUserFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FragmentNewUserBinding binding;
 
     public AddUserFragment() {
         // Required empty public constructor
@@ -65,7 +70,23 @@ public class AddUserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_user, container, false);
+        binding = FragmentNewUserBinding.inflate(inflater, container, false);
+        View rootView = binding.getRoot();
+
+        binding.buttonCancel.setOnClickListener(view -> {
+            // navigate to UserListFragment
+            returnToUserListFragment(view);
+        });
+
+        binding.buttonAdd.setOnClickListener(view -> {
+            returnToUserListFragment(view);
+        });
+
+        return rootView;
+    }
+
+    private void returnToUserListFragment(View view) {
+        // navigate to UserListFragment
+        Navigation.findNavController(view).navigate(R.id.action_nav_add_user_to_users,null);
     }
 }
