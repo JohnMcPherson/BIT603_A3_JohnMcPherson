@@ -1,3 +1,10 @@
+/*
+ASSUMPTIONS
+    -   Only non-admin users are added on this screen (for now)
+        To provide the option of adding an admin user, we could add a checkbox to the screen,
+        and map that to the User.isAdmin field
+*/
+
 package nz.co.afleet.bit603_a3_johnmcpherson;
 
 import android.os.Bundle;

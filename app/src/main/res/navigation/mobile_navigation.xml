@@ -58,6 +58,6 @@
     <fragment
         android:id="@+id/addUserFragment"
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.AddUserFragment"
-        android:label="fragment_add_user"
+        android:label="@string/add_user_label"
         tools:layout="@layout/fragment_add_user" />
 </navigation>
