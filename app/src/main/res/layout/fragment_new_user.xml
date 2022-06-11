@@ -26,7 +26,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="User"
+            android:text="dummy"
             android:textIsSelectable="false"
             app:layout_constraintStart_toEndOf="@+id/barrierVertical"
             app:layout_constraintTop_toTopOf="parent"
@@ -82,12 +82,22 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/textAddress"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <CheckBox
+            android:id="@+id/checkBoxAdministrator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@id/barrierVertical"
+            app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrierVertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="textUserNameSpacer, textPasswordSpacer, textDateOfBirthSpacer, textEmployeeNumberSpacer, textPhoneNumberSpacer, textAddressSpacer"
+            app:constraint_referenced_ids="textUserNameLabel, textPasswordLabel, textDateOfBirthLabel, textEmployeeNumberLabel, textPhoneNumberLabel, textAddressLabel, textAdministratorLabel"
             tools:layout_editor_absoluteX="223dp"
             tools:layout_editor_absoluteY="160dp" />
 
@@ -147,62 +157,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textPhoneNumber" />
 
         <TextView
-            android:id="@+id/textUserNameSpacer"
+            android:id="@+id/textAdministratorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@id/textUserNameLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textUserName"
-            android:text=":" />
+            android:text="@string/administrator_label"
+            app:layout_constraintBaseline_toBaselineOf="@+id/checkBoxAdministrator"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textPasswordSpacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textPasswordLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textPassword"
-            android:text=":" />
 
-        <TextView
-            android:id="@+id/textDateOfBirthSpacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textDateOfBirthLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textDateOfBirth"
-            android:text=":" />
-
-        <TextView
-            android:id="@+id/textEmployeeNumberSpacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textEmployeeNumberLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textEmployeeNumber"
-            android:text=":" />
-
-        <TextView
-            android:id="@+id/textPhoneNumberSpacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textPhoneNumberLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textPhoneNumber"
-            android:text=":" />
-
-        <TextView
-            android:id="@+id/textAddressSpacer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintStart_toEndOf="@+id/textAddressLabel"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textAddress"
-            android:text=":" />
 </androidx.constraintlayout.widget.ConstraintLayout>
