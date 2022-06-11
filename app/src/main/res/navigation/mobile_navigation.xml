@@ -41,6 +41,9 @@
         <action
             android:id="@+id/show_item_detail"
             app:destination="@id/user_detail_fragment" />
+        <action
+            android:id="@+id/action_nav_users_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/user_detail_fragment"
@@ -52,4 +55,9 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.AddUserFragment"
+        android:label="fragment_add_user"
+        tools:layout="@layout/fragment_add_user" />
 </navigation>

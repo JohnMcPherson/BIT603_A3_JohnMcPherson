@@ -44,4 +44,16 @@
         <!--Note that the R.id.user_detail_frag_container element (above) points to a different navigation graph.
             This ensures that the navigation drawer works as expected-->
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
