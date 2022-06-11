@@ -78,7 +78,7 @@ public class UserDetailFragment extends Fragment {
         if (mUser == null) {
             // for the detail layout, on the list view, we should hide the detail labels
             // and the default text that we used to help setup the layout
-            binding.getRoot().setVisibility(View.INVISIBLE);
+            binding.getRoot().setVisibility(View.GONE);
         } else {
             // We have a selected user, sot display the details
             binding.getRoot().setVisibility(View.VISIBLE);
