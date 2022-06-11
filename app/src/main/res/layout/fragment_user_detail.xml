@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="@string/add_user_date_of_birth_field_name"
+            android:text="@string/date_of_birth_label"
             app:layout_constraintBaseline_toBaselineOf="@+id/textDateOfBirth"
             app:layout_constraintStart_toStartOf="parent" />
 
