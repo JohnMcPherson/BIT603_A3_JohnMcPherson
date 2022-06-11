@@ -1,9 +1,7 @@
 package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.DragEvent;
 
 import androidx.fragment.app.Fragment;
 
@@ -12,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-
-import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentUserDetailBinding;
 
@@ -35,7 +30,7 @@ public class UserDetailFragment extends Fragment {
     /**
      * The placeholder content this fragment is presenting.
      */
-    private User mItem;
+    private User mUser;
     private TextView mTextView;
 
     private FragmentUserDetailBinding binding;
@@ -56,7 +51,7 @@ public class UserDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             Context context = getContext();
-            mItem = User.getById(context, arguments.getString(ARG_USER_ID));
+            mUser = User.getById(context, arguments.getString(ARG_USER_ID));
         }
     }
 
@@ -80,8 +75,14 @@ public class UserDetailFragment extends Fragment {
     }
 
     private void updateContent() {
-        if (mItem != null) {
-            mTextView.setText(mItem.getName());
+        if (mUser == null) {
+            // for the detail layout, on the list view, we should hide the detail labels
+            // and the default text that we used to help setup the layout
+            binding.getRoot().setVisibility(View.INVISIBLE);
+        } else {
+            // We have a selected user, sot display the details
+            binding.getRoot().setVisibility(View.VISIBLE);
+            mTextView.setText(mUser.getName());
         }
     }
 }
