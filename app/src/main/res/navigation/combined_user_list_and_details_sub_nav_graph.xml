@@ -14,7 +14,7 @@
             android:defaultValue=""
             app:argType="string" />
         <action
-            android:id="@+id/action_sw600_fragment_item_detail_to_sw600AddUserFragment"
+            android:id="@+id/action_nav_users_to_add_user"
             app:destination="@id/sw600AddUserFragment" />
     </fragment>
     <fragment
