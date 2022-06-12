@@ -9,7 +9,6 @@
 
         <TextView
             android:id="@+id/textUserNameLabel"
-            style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -17,20 +16,6 @@
             android:text="@string/user_name_label"
             app:layout_constraintBaseline_toBaselineOf="@+id/textUserName"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textUserName"
-            style="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="dummy"
-            android:textIsSelectable="false"
-            app:layout_constraintStart_toEndOf="@+id/barrierVertical"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
 
         <TextView
             android:id="@+id/textPasswordLabel"
@@ -82,89 +67,130 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/textAddress"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBoxAdministrator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textAddress" />
-
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrierVertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="textUserNameLabel, textPasswordLabel, textDateOfBirthLabel, textEmployeeNumberLabel, textPhoneNumberLabel, textAddressLabel, textAdministratorLabel"
+            app:constraint_referenced_ids="textUserNameLabel, textPasswordLabel, textDateOfBirthLabel, textEmployeeNumberLabel, textPhoneNumberLabel, textAddressLabel"
             tools:layout_editor_absoluteX="223dp"
             tools:layout_editor_absoluteY="160dp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/required"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toEndOf="@+id/barrierVertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
+
+        <EditText
             android:id="@+id/textPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Password"
+            android:hint="@string/required"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
             app:layout_constraintTop_toBottomOf="@+id/textUserName" />
 
-        <TextView
+        <EditText
             android:id="@+id/textDateOfBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="DoB"
+            android:hint="@string/required"
+            android:inputType="date"
+            android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
             app:layout_constraintTop_toBottomOf="@+id/textPassword" />
 
-        <TextView
+        <EditText
             android:id="@+id/textEmployeeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Employee Number"
+            android:hint="@string/required"
+            android:inputType="text"
+            android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
             app:layout_constraintTop_toBottomOf="@+id/textDateOfBirth" />
 
-        <TextView
+        <EditText
             android:id="@+id/textPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Phone Number"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:hint="@string/required"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
             app:layout_constraintTop_toBottomOf="@+id/textEmployeeNumber" />
 
-        <TextView
+        <EditText
             android:id="@+id/textAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Address"
+            android:hint="@string/required"
+            android:inputType="textPostalAddress"
+            android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
             app:layout_constraintTop_toBottomOf="@+id/textPhoneNumber" />
 
         <TextView
-            android:id="@+id/textAdministratorLabel"
-            android:layout_width="wrap_content"
+            android:id="@+id/textErrorMessageAdd"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="@string/administrator_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/checkBoxAdministrator"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal"
+            android:text="Dummy Error Message"
+            android:textColor="@color/mandatory_and_error_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/cancel"
+            app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textErrorMessageAdd" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonCancel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
