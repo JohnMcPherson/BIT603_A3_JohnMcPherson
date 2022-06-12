@@ -22,8 +22,7 @@
     <string name="delete_user_details_required_header">Please enter</string>
     <string name="delete__user_error_unable_to_delete">Sorry. We cannot find that user. Please try again</string>
 
-    <!--Added automatically by Android Studio
-    -->
+    <!--Added automatically by Android Studio -->
     <string name="title_activity_item_detail_host">ItemDetailHostActivity</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

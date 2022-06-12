@@ -64,4 +64,9 @@
             android:id="@+id/action_nav_add_user_to_users"
             app:destination="@id/nav_users" />
     </fragment>
+    <activity
+        android:id="@+id/addInventoryActivity"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.AddInventoryActivity"
+        android:label="activity_add_inventory"
+        tools:layout="@layout/activity_add_inventory" />
 </navigation>

@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.inventory.AddInventoryActivity"
+            android:theme="@style/Theme.BIT603_A3_JohnMcPherson.NoActionBar"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
