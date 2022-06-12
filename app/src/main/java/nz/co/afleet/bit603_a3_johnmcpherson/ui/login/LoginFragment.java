@@ -46,8 +46,8 @@ public class LoginFragment extends Fragment {
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
             LinkedHashMap<Integer, Boolean> fieldNamesWithIsFilled = new LinkedHashMap<>();
-            fieldNamesWithIsFilled.put(R.string.login_user_field_name, hasUserName);
-            fieldNamesWithIsFilled.put(R.string.login_password_field_name, hasPassword);
+            fieldNamesWithIsFilled.put(R.string.user_field_name, hasUserName);
+            fieldNamesWithIsFilled.put(R.string.password_field_name, hasPassword);
             String errorMessage = ErrorMessageGenerator.determineErrorMessage(getContext(), R.string.error_incorrect_login, R.string.login_error_header, fieldNamesWithIsFilled, loginSuccessful);
             textViewErrorMessage.setText(errorMessage);
 

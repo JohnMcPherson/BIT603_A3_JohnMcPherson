@@ -26,8 +26,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForSuccess() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
-        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, false);
 
         checkErrorMessage("",
                 R.string.error_incorrect_login,
@@ -40,8 +40,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForBothFieldsMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
-        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, false);
 
         checkErrorMessage("Please enter your user name and password",
                 R.string.error_incorrect_login,
@@ -54,8 +54,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForFirstFieldMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, false);
-        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, true);
 
         checkErrorMessage("Please enter your user name",
                 R.string.error_incorrect_login,
@@ -81,8 +81,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForSecondFieldMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
-        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, false);
 
         checkErrorMessage("Please enter your password",
                 R.string.error_incorrect_login,
@@ -95,8 +95,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForSuccessUsingThreeFields() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, true);
-        fieldsFilledOrNotFilled.put(R.string.add_user_password_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, true);
 
         checkErrorMessage("Sorry. We cannot add that user because the user name is duplicated. Please try again",
@@ -122,8 +122,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForThreeFieldsMissing() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.add_user_user_field_name, false);
-        fieldsFilledOrNotFilled.put(R.string.add_user_password_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, false);
         fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, false);
 
         checkErrorMessage("Please enter user name, password and date of birth",
@@ -137,8 +137,8 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkMessageForActionFailed() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.login_user_field_name, true);
-        fieldsFilledOrNotFilled.put(R.string.login_password_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.password_field_name, true);
 
         checkErrorMessage("Sorry. We did not recognise that user/password combination. Please try again",
                 R.string.error_incorrect_login,
