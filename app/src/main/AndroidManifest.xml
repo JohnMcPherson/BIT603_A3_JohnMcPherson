@@ -25,12 +25,10 @@
         </activity>
         <activity
             android:name=".ui.inventory.AddInventoryActivity"
-            android:theme="@style/Theme.BIT603_A3_JohnMcPherson.NoActionBar"
             android:exported="false">
         </activity>
         <activity
             android:name=".AddUserActivity"
-            android:theme="@style/Theme.BIT603_A3_JohnMcPherson.NoActionBar"
             android:exported="false">
         </activity>
     </application>

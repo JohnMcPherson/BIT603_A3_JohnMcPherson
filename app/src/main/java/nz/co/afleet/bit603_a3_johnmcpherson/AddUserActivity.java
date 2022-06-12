@@ -7,10 +7,11 @@ ASSUMPTIONS
 
 package nz.co.afleet.bit603_a3_johnmcpherson;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedHashMap;
 
@@ -19,7 +20,7 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentAddUserBinding;
 import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.allFieldsFilledIn;
 import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.determineErrorMessage;
 
-public class AddUserActivity extends Activity {
+public class AddUserActivity extends AppCompatActivity {
 
 
     private FragmentAddUserBinding binding;
