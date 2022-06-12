@@ -42,7 +42,7 @@ public class UserListFragment extends Fragment {
                 //   - mobile_navigation
                 //   - OR combined_user_list_and_details_sub_nav_graph
                 // .navigate() uses the action from the relevant controller
-                // in either case, the action opens AddUserFragment
+                // in either case, the action opens AddUserActivity
                 Navigation.findNavController(view).navigate(R.id.action_nav_users_to_add_user,null);
 
             }

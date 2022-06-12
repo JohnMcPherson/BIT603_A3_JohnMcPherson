@@ -7,15 +7,11 @@ ASSUMPTIONS
 
 package nz.co.afleet.bit603_a3_johnmcpherson;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
+
 import java.util.LinkedHashMap;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentAddUserBinding;
@@ -23,51 +19,44 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentAddUserBinding;
 import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.allFieldsFilledIn;
 import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.determineErrorMessage;
 
-public class AddUserFragment extends Fragment {
+public class AddUserActivity extends Activity {
 
 
     private FragmentAddUserBinding binding;
 
-    public AddUserFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
+   @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentAddUserBinding.inflate(inflater, container, false);
-        View rootView = binding.getRoot();
+        // use View Binding to set the root view
+        binding = FragmentAddUserBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         binding.buttonCancel.setOnClickListener(view -> {
             // navigate to UserListFragment
-            returnToUserListFragment(view);
+            finish();
+//            returnToUserListFragment(view);
         });
 
         binding.buttonAdd.setOnClickListener(view -> {
             LinkedHashMap<Integer, Boolean> statusOfEachEntryField = getMandatoryFieldPopulatedDetails();
             if (allFieldsFilledIn(statusOfEachEntryField)) {
-                returnToUserListFragment(view);
-           } else {
-                String errorMessage = determineErrorMessage(getContext(),
+//                Toast.makeText(this,stringItemName + " " + getString(R.string.added_to_inventory), Toast.LENGTH_LONG).show();
+                finish();
+            } else {
+                String errorMessage = determineErrorMessage(this,
                         null,
                         R.string.missing_details_header,
                         statusOfEachEntryField,
                         false);
                 binding.textErrorMessageAdd.setText(errorMessage);
-           }
+            }
         });
-
-        return rootView;
     }
 
     private void returnToUserListFragment(View view) {
         // navigate to UserListFragment
-        Navigation.findNavController(view).navigate(R.id.action_nav_add_user_to_users,null);
+//        Navigation.findNavController(view).navigate(R.id.action_nav_add_user_to_users,null);
     }
 
     private LinkedHashMap<Integer, Boolean> getMandatoryFieldPopulatedDetails() {
