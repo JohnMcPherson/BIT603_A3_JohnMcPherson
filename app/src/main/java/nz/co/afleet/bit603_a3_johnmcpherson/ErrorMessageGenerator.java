@@ -10,7 +10,7 @@ import java.util.Map;
 public class ErrorMessageGenerator {
 
     private final Context context; // supports retrieval of strings from the string resources
-    private final int stringResourceInvalidCombination; //the message for when the user has filled in both fields, but the action failed. e.g. incorrect user/password combination
+    private final Integer stringResourceInvalidCombination; //the message for when the user has filled in both fields, but the action failed. e.g. incorrect user/password combination
     private final int stringResourceDetailsRequiredHeader; //the beginning of the message to indicate missing field(s) e.g. "Please enter your"
 
     private final boolean actionSucceeded;
@@ -30,7 +30,7 @@ public class ErrorMessageGenerator {
      *
      *@param actionSucceeded
      */
-    public ErrorMessageGenerator(
+    private ErrorMessageGenerator(
                         Context context,
                         int stringResourceInvalidCombination,
                        int stringResourceDetailsRequiredHeader,
@@ -43,8 +43,19 @@ public class ErrorMessageGenerator {
         initialiseFieldsNotPopulated(fieldsFilledOrNotFilled);
     }
 
+    /**
+     *
+     * @param context
+     * @param stringResourceInvalidCombination // resource id for the String to be returned for an invalid input (e.g. "We do not recognise that user/password combination"
+     * @param stringResourceDetailsRequiredHeader // resource id for the String to start a message asking for more details (e.g. "Please enter")
+     * @param fieldsFilledOrNotFilled // a Map of
+     *                                  - the resource id for the string representing the field (e.g. "user name"
+     *                                  - a Boolean representing whether or not that field is filled. Filled (not empty) = true
+     * @param actionSucceeded // whether or not a successful action (such as login) has occurred.
+     * @return
+     */
     public static String determineErrorMessage(Context context,
-                                               int stringResourceInvalidCombination,
+                                               Integer stringResourceInvalidCombination,
                                                int stringResourceDetailsRequiredHeader,
                                                LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                                                boolean actionSucceeded) {
@@ -59,6 +70,22 @@ public class ErrorMessageGenerator {
     }
 
     /**
+     * Utility to determine if all the values are true (i.e. all fields filled in)
+     * @param fieldsFilledOrNotFilled
+     * @return
+     */
+    public static boolean allFieldsFilledIn(LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled) {
+        for (Map.Entry<Integer, Boolean> entry : fieldsFilledOrNotFilled.entrySet()) {
+            if (!entry.getValue()) {
+                // we have at least one entry not filled in
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    /**
      * Generic method for returning an error message for a form with two mandatory fields.
      *
      * actionSucceeded should not be true if any of the mandatory fields are false;
@@ -70,7 +97,14 @@ public class ErrorMessageGenerator {
         if (actionSucceeded) return ""; // clear the error message
 
         // we don't have a successful action. If we have all fields filled in, there was a problem using them
-        if (allMandatoryFieldsPopulated()) return context.getString(stringResourceInvalidCombination);
+        if (allMandatoryFieldsPopulated()) {
+            if (stringResourceInvalidCombination != null ) {
+                return context.getString(stringResourceInvalidCombination);
+           } else {
+                // we shouldn't get here, but if we do we don't want to crash or return a junk message
+                return "";
+            }
+         }
 
         // We are missing at least one field, so populate the error message with the "header" and the first missing field name
         String nameOfFirstMissingField = getNameOfMissingField(context, 0);
@@ -96,9 +130,6 @@ public class ErrorMessageGenerator {
         Integer stringResourceIdentifier = mandatoryFieldsNotPopulated.get(index);
         return context.getString(stringResourceIdentifier);
     }
-
-    // I used a LinkedHashMap (as a because the order in which entries are added is retained when iterating over it (with a for loop)
-    // The order is important because we want control over the order in which the field names are added to the error message
 
     /**
      *

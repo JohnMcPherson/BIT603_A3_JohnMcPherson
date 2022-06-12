@@ -42,10 +42,11 @@
 
     <!-- miscellaneous-->
     <string name="mandatory_indicator">*</string>
+    <string name="missing_details_header">Please enter</string>
+    <string name="login_error_header">Please enter your</string>
 
     <!-- from assignment 2 -->
     <string name="login_button_label">Login</string>
-    <string name="login_error_header">Please enter your</string>
     <string name="login_error_user_name">User Name</string>
     <string name="login_error_password">Password</string>
     <string name="title_activity_main">MainActivity</string>
@@ -61,7 +62,6 @@
     <string name="add">Add</string>
 
     <!--add inventory activity strings-->
-    <string name="missing_inventory_details_header">Please enter</string>
     <string name="missing_inventory_item_name">Item Name</string>
     <string name="missing_inventory_item_quantity">Quantity</string>
     <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
@@ -72,7 +72,7 @@
     <string name="discard_draft">Discard</string>
     <string name="inventory_add_cancelled">Discarded draft inventory item</string>
 
-    <!-- user detail labels -->
+    <!-- user detail -->
     <string name="user_list_label">Users</string>
     <string name="user_detail_label">User</string>
     <string name="add_user_label">Add User</string>

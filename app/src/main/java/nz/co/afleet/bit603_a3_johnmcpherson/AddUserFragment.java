@@ -15,62 +15,32 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import java.util.LinkedHashMap;
 
-import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentNewUserBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentAddUserBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddUserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.allFieldsFilledIn;
+import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.determineErrorMessage;
+
 public class AddUserFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private FragmentNewUserBinding binding;
+    private FragmentAddUserBinding binding;
 
     public AddUserFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddUserFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddUserFragment newInstance(String param1, String param2) {
-        AddUserFragment fragment = new AddUserFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentNewUserBinding.inflate(inflater, container, false);
+        binding = FragmentAddUserBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
 
         binding.buttonCancel.setOnClickListener(view -> {
@@ -79,7 +49,16 @@ public class AddUserFragment extends Fragment {
         });
 
         binding.buttonAdd.setOnClickListener(view -> {
-            returnToUserListFragment(view);
+            LinkedHashMap<Integer, Boolean> statusOfEachEntryField = getMandatoryFieldPopulatedDetails();
+            if (allFieldsFilledIn(statusOfEachEntryField)) {
+                returnToUserListFragment(view);
+           } else {
+                String errorMessage = determineErrorMessage(getContext(),
+                        null,
+                        R.string.missing_details_header,
+                        statusOfEachEntryField,
+                        false);
+            }
         });
 
         return rootView;
@@ -88,5 +67,16 @@ public class AddUserFragment extends Fragment {
     private void returnToUserListFragment(View view) {
         // navigate to UserListFragment
         Navigation.findNavController(view).navigate(R.id.action_nav_add_user_to_users,null);
+    }
+
+    private LinkedHashMap<Integer, Boolean> getMandatoryFieldPopulatedDetails() {
+        LinkedHashMap<Integer, Boolean> returnMap = new LinkedHashMap<>();
+        addFieldStatusToMap(returnMap, binding.textUserName, R.id.textUserName);
+        return returnMap;
+    }
+
+    private void addFieldStatusToMap(LinkedHashMap<Integer, Boolean> fieldStatuses, EditText fieldToBeTestedForPopulated, Integer stringResourceDisplayField) {
+        boolean isPopulated = !fieldToBeTestedForPopulated.getText().toString().isEmpty();
+        fieldStatuses.put(stringResourceDisplayField, isPopulated);
     }
 }
