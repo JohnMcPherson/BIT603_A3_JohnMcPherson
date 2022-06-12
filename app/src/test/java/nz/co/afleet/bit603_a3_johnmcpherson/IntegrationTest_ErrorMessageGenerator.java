@@ -68,7 +68,7 @@ public class IntegrationTest_ErrorMessageGenerator {
     @Test
     public void checkErrorMessageOneFieldOnly() {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
-        fieldsFilledOrNotFilled.put(R.string.delete_user_user_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.user_field_name, false);
 
         checkErrorMessage("Please enter user name",
                 R.string.delete__user_error_unable_to_delete,
@@ -97,7 +97,7 @@ public class IntegrationTest_ErrorMessageGenerator {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.user_field_name, true);
         fieldsFilledOrNotFilled.put(R.string.password_field_name, true);
-        fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, true);
+        fieldsFilledOrNotFilled.put(R.string.date_of_birth_field_name, true);
 
         checkErrorMessage("Sorry. We cannot add that user because the user name is duplicated. Please try again",
                 R.string.add_user_error_unable_to_add,
@@ -124,7 +124,7 @@ public class IntegrationTest_ErrorMessageGenerator {
         LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled = new LinkedHashMap<>();
         fieldsFilledOrNotFilled.put(R.string.user_field_name, false);
         fieldsFilledOrNotFilled.put(R.string.password_field_name, false);
-        fieldsFilledOrNotFilled.put(R.string.add_user_date_of_birth_field_name, false);
+        fieldsFilledOrNotFilled.put(R.string.date_of_birth_field_name, false);
 
         checkErrorMessage("Please enter user name, password and date of birth",
                 R.string.add_user_error_unable_to_add,

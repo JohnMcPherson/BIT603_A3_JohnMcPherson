@@ -72,7 +72,12 @@ public class AddUserFragment extends Fragment {
 
     private LinkedHashMap<Integer, Boolean> getMandatoryFieldPopulatedDetails() {
         LinkedHashMap<Integer, Boolean> returnMap = new LinkedHashMap<>();
-        addFieldStatusToMap(returnMap, binding.textUserName, R.string.user_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextUserName, R.string.user_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextPassword, R.string.password_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextDateOfBirth, R.string.date_of_birth_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextEmployeeNumber, R.string.employee_number_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextPhoneNumber, R.string.user_phone_number_field_name);
+        addFieldStatusToMap(returnMap, binding.editTextAddress, R.string.user_address_field_name);
         return returnMap;
     }
 

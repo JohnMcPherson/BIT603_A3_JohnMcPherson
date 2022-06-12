@@ -14,7 +14,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="@string/user_name_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textUserName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextUserName"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="@string/password_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textPassword"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextPassword"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -33,8 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="@string/add_user_date_of_birth_field_name"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textDateOfBirth"
+            android:text="@string/date_of_birth_field_name"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextDateOfBirth"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="@string/employee_number_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textEmployeeNumber"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextEmployeeNumber"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="@string/phone_number_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textPhoneNumber"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextPhoneNumber"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="@string/address_label"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textAddress"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextAddress"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
@@ -77,7 +77,7 @@
             tools:layout_editor_absoluteY="160dp" />
 
         <EditText
-            android:id="@+id/textUserName"
+            android:id="@+id/editTextUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -91,7 +91,7 @@
             tools:context="nz.co.afleet.bit603_a3_johnmcpherson.ui.users.UserDetailFragment" />
 
         <EditText
-            android:id="@+id/textPassword"
+            android:id="@+id/editTextPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -101,10 +101,10 @@
             android:inputType="textPassword"
             android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textUserName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
 
         <EditText
-            android:id="@+id/textDateOfBirth"
+            android:id="@+id/editTextDateOfBirth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -114,10 +114,11 @@
             android:inputType="date"
             android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+        <!--Assumption: alphanumeric allowed for employee number e.g. "K123" -->
         <EditText
-            android:id="@+id/textEmployeeNumber"
+            android:id="@+id/editTextEmployeeNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -127,10 +128,10 @@
             android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textDateOfBirth" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" />
 
         <EditText
-            android:id="@+id/textPhoneNumber"
+            android:id="@+id/editTextPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -140,10 +141,10 @@
             android:minHeight="48dp"
             android:hint="@string/required"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textEmployeeNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmployeeNumber" />
 
         <EditText
-            android:id="@+id/textAddress"
+            android:id="@+id/editTextAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -153,7 +154,7 @@
             android:inputType="textPostalAddress"
             android:minHeight="48dp"
             app:layout_constraintStart_toEndOf="@id/barrierVertical"
-            app:layout_constraintTop_toBottomOf="@+id/textPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber" />
 
         <TextView
             android:id="@+id/textErrorMessageAdd"
@@ -169,7 +170,7 @@
             android:textColor="@color/mandatory_and_error_indicator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
         <Button
             android:id="@+id/buttonCancel"
