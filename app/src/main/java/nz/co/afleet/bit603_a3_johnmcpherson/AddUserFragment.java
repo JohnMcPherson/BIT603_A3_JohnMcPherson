@@ -58,7 +58,8 @@ public class AddUserFragment extends Fragment {
                         R.string.missing_details_header,
                         statusOfEachEntryField,
                         false);
-            }
+                binding.textErrorMessageAdd.setText(errorMessage);
+           }
         });
 
         return rootView;

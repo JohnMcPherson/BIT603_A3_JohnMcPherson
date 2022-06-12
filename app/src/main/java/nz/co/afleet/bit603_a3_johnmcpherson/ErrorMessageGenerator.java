@@ -31,8 +31,8 @@ public class ErrorMessageGenerator {
      *@param actionSucceeded
      */
     private ErrorMessageGenerator(
-                        Context context,
-                        int stringResourceInvalidCombination,
+                       Context context,
+                       Integer stringResourceInvalidCombination,
                        int stringResourceDetailsRequiredHeader,
                        LinkedHashMap<Integer, Boolean> fieldsFilledOrNotFilled,
                        boolean actionSucceeded) {
