@@ -82,4 +82,6 @@
     <string name="phone_number_label">Phone Number</string>
     <string name="address_label">Address</string>
     <string name="administrator_label">Administrator</string>
+    <string name="added_to_users">added to users</string>
+    <string name="duplicate_user">Sorry. That user name is already registered</string>
 </resources>

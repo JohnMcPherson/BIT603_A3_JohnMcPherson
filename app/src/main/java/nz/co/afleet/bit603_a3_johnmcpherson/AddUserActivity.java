@@ -10,11 +10,13 @@ package nz.co.afleet.bit603_a3_johnmcpherson;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedHashMap;
 
+import nz.co.afleet.bit603_a3_johnmcpherson.database.User;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentAddUserBinding;
 
 import static nz.co.afleet.bit603_a3_johnmcpherson.ErrorMessageGenerator.allFieldsFilledIn;
@@ -42,8 +44,22 @@ public class AddUserActivity extends AppCompatActivity {
         binding.buttonAdd.setOnClickListener(view -> {
             LinkedHashMap<Integer, Boolean> statusOfEachEntryField = getMandatoryFieldPopulatedDetails();
             if (allFieldsFilledIn(statusOfEachEntryField)) {
-//                Toast.makeText(this,stringItemName + " " + getString(R.string.added_to_inventory), Toast.LENGTH_LONG).show();
-                finish();
+                if (!User.isDuplicateOfUserName(this, binding.editTextUserName.getText().toString())) {
+                    User newUser = User.createUser(
+                            this,
+                            binding.editTextUserName.getText().toString(),
+                            binding.editTextPassword.getText().toString(),
+                            binding.editTextDateOfBirth.getText().toString(),
+                            binding.editTextEmployeeNumber.getText().toString(),
+                            binding.editTextPhoneNumber.getText().toString(),
+                            binding.editTextAddress.getText().toString(),
+                            false
+                    );
+                    Toast.makeText(this,newUser.getName() + " " + getString(R.string.added_to_users), Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(this,getString(R.string.duplicate_user), Toast.LENGTH_LONG).show();
+                }
             } else {
                 String errorMessage = determineErrorMessage(this,
                         null,
