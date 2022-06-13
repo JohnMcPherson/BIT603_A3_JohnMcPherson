@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.LinkedHashMap;
@@ -69,6 +70,9 @@ public class AddUserActivity extends AppCompatActivity {
                 binding.textErrorMessageAdd.setText(errorMessage);
             }
         });
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(R.string.add_user_label);
     }
 
     private void returnToUserListFragment(View view) {
