@@ -10,6 +10,7 @@ package nz.co.afleet.bit603_a3_johnmcpherson;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -28,6 +29,8 @@ public class AddUserActivity extends AppCompatActivity {
 
     private FragmentAddUserBinding binding;
 
+    TextView textViewErrorMessage;
+
    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,8 @@ public class AddUserActivity extends AppCompatActivity {
         // use View Binding to set the root view
         binding = FragmentAddUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        textViewErrorMessage = binding.textErrorMessageAdd;
 
         binding.buttonCancel.setOnClickListener(view -> {
             // navigate to UserListFragment
@@ -67,17 +72,12 @@ public class AddUserActivity extends AppCompatActivity {
                         R.string.missing_details_header,
                         statusOfEachEntryField,
                         false);
-                binding.textErrorMessageAdd.setText(errorMessage);
+                textViewErrorMessage.setText(errorMessage);
             }
         });
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.add_user_label);
-    }
-
-    private void returnToUserListFragment(View view) {
-        // navigate to UserListFragment
-//        Navigation.findNavController(view).navigate(R.id.action_nav_add_user_to_users,null);
     }
 
     private LinkedHashMap<Integer, Boolean> getMandatoryFieldPopulatedDetails() {
