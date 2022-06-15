@@ -45,6 +45,9 @@ public class InventoryItem {
     @ColumnInfo(name = "Name")
     private String Name;
 
+    @ColumnInfo(name = "ItemType")
+    private String itemType;
+
     @ColumnInfo(name = "Quantity")
     private double quantity;
 
@@ -69,6 +72,14 @@ public class InventoryItem {
         Name = name;
     }
 
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
     public double getQuantity() {
         return quantity;
     }
@@ -85,7 +96,7 @@ public class InventoryItem {
     // If (when, for a production app) we added update and delete functionality, we would create appropriate UI facing methods in this class
     // Uses a string for quantity, so we can provide a service directly to the UI, without the UI developer needing to know
     // how the quantity is stored
-    public static void addInventoryItemToDatabase(Application application, String name, String quantity) {
+    public static void addInventoryItemToDatabase(Application application, String name, String itemType, String quantity) {
         // initial check on data quality
         if (name == null) return;
         double doubleQuantity;
@@ -107,7 +118,7 @@ public class InventoryItem {
         // The UI developer is expected to use that method, prior to attempting to add inventory to the database
         if (!isDuplicateOfInventoryItem(application, name)) {
             // if all OK, create and save the InventoryItem
-            InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
+            InventoryItem newInventoryItem = InventoryItem.create(name, itemType, doubleQuantity);
             getDaoInventory(application).addInventoryItem(newInventoryItem);
         }
     }
@@ -115,9 +126,10 @@ public class InventoryItem {
     // Make it quicker and less error prone to create a new inventory item
     // Default visibility hides this function from the ui (and other) packages, so the UI developer does not create an InventoryItem,
     // and (inadvertently) omit adding it to the database.
-    static InventoryItem create(String name, double quantity) {
+    static InventoryItem create(String name, String itemType, double quantity) {
         InventoryItem item = new InventoryItem();
         item.setName(name);
+        item.setItemType(itemType);
         item.setQuantity(quantity);
         return item;
     }

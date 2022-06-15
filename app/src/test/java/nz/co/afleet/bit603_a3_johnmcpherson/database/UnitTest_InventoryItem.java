@@ -19,10 +19,12 @@ public class UnitTest_InventoryItem {
     public void createItemConfirmGets() {
         String NAME = "Sugar";
         double DOUBLE_QUANTITY = 6;
+        String ITEM_TYPE = "Ingredient";
         String STRING_QUANTITY = "6.0";
 
-        InventoryItem inventoryItem = InventoryItem.create(NAME, DOUBLE_QUANTITY);
+        InventoryItem inventoryItem = InventoryItem.create(NAME, ITEM_TYPE, DOUBLE_QUANTITY);
         assertEquals(NAME, inventoryItem.getName());
+        assertEquals(ITEM_TYPE, inventoryItem.getItemType());
         assertEquals(DOUBLE_QUANTITY, inventoryItem.getQuantity(), 0);
         assertEquals(STRING_QUANTITY, inventoryItem.getStringQuantity());
     }
@@ -30,11 +32,13 @@ public class UnitTest_InventoryItem {
    @Test
     public void confirmDecimalQuantity() {
         String NAME = "Sugar";
+        String ITEM_TYPE = "Ingredient";
         double DOUBLE_QUANTITY = 1.24;
         String STRING_QUANTITY = "1.24";
 
-        InventoryItem inventoryItem = InventoryItem.create(NAME, DOUBLE_QUANTITY);
+        InventoryItem inventoryItem = InventoryItem.create(NAME, ITEM_TYPE, DOUBLE_QUANTITY);
         assertEquals(NAME, inventoryItem.getName());
+       assertEquals(ITEM_TYPE, inventoryItem.getItemType());
         assertEquals(DOUBLE_QUANTITY, inventoryItem.getQuantity(), 0);
         assertEquals(STRING_QUANTITY, inventoryItem.getStringQuantity());
     }
