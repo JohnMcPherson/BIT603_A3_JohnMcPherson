@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 // default visibility so that only authorised classes can use it
-@Database(entities = {User.class, InventoryItem.class}, version = 1)
+@Database(entities = {User.class, InventoryItem.class}, version = 2)
 abstract class ApplicationDatabase extends RoomDatabase {
     private static ApplicationDatabase instance;
 
