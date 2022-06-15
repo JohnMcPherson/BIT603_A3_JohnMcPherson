@@ -30,4 +30,6 @@ abstract class ApplicationDatabase extends RoomDatabase {
     }
 
     public abstract DaoUser daoUser();
+
+    public abstract DaoInventory daoInventory();
 }
