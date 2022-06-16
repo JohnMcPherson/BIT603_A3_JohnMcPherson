@@ -122,7 +122,7 @@ public class MainActivityTest {
         ViewInteraction navigationMenuItemView = onView(
                 allOf(withId(R.id.nav_inventory),
                         childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.design_navigation_view),
+                                allOf(
                                         childAtPosition(
                                                 withId(R.id.nav_view),
                                                 0)),
@@ -282,7 +282,7 @@ public class MainActivityTest {
         ViewInteraction navigationMenuItemView2 = onView(
                 allOf(withId(R.id.nav_users),
                         childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.design_navigation_view),
+                                allOf(
                                         childAtPosition(
                                                 withId(R.id.nav_view),
                                                 0)),
@@ -414,7 +414,7 @@ public class MainActivityTest {
         ViewInteraction navigationMenuItemView3 = onView(
                 allOf(withId(R.id.nav_home),
                         childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.design_navigation_view),
+                                allOf(
                                         childAtPosition(
                                                 withId(R.id.nav_view),
                                                 0)),
