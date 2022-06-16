@@ -18,6 +18,9 @@ import org.robolectric.RobolectricTestRunner;
 import java.util.ArrayList;
 import nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.InventoryRecyclerViewAdapter;
 
+import static nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem.addInventoryItemToDatabase;
+import static nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem.createTestItems;
+import static nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem.deleteAllInventoryItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -34,9 +37,9 @@ public class Integration_InventoryItemDisplay {
     }
 
     @Test
-    public void testRecyclerView() {
-        InventoryItem.createTestItems(application);
-        InventoryItem.addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
+    public void testRecyclerViewPageIncrement() {
+        createTestItems(application);
+        addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
         ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
         inventoryItems.addAll(getDaoInventory().getInventoryItems());
         InventoryRecyclerViewAdapter inventoryRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryItems);
@@ -49,6 +52,27 @@ public class Integration_InventoryItemDisplay {
         assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
         inventoryRecyclerViewAdapter.incrementPage();
         assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
+    }
+
+    @Test
+    public void testRecyclerViewAutoPageDecrement() {
+        createTestItems(application);
+        addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
+        ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
+        inventoryItems.addAll(getDaoInventory().getInventoryItems());
+        InventoryRecyclerViewAdapter inventoryRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryItems);
+        inventoryRecyclerViewAdapter.incrementPage();
+        inventoryRecyclerViewAdapter.incrementPage();
+        inventoryRecyclerViewAdapter.incrementPage();
+        assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
+        inventoryRecyclerViewAdapter.incrementPage();
+        assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
+        assertEquals(1, inventoryRecyclerViewAdapter.getItemCount());
+        deleteAllInventoryItems(application);
+        inventoryItems.clear();
+        inventoryItems.addAll(getDaoInventory().getInventoryItems());
+        inventoryRecyclerViewAdapter.notifyDataSetChanged();
+        assertEquals(0, inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
     }
 
     private DaoInventory getDaoInventory() {
