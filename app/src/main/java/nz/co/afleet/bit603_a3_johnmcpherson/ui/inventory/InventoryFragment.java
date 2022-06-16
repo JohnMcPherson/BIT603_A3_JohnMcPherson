@@ -1,12 +1,22 @@
+/*
+*********IMPORTANT NOTE********
+        - the core code was copied from BIT603 Assignment 2 and modified to meet the new requirements
+*/
+
 package nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,10 +34,6 @@ import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
  * A fragment representing a list of Items.
  */
 public class InventoryFragment extends Fragment {
-/*
-*********IMPORTANT NOTE********
-        - the core code was copied from BIT603 Assignment 2 and modified to meet the new requirements
-*/
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -55,7 +61,8 @@ public class InventoryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        InventoryItem.createTestItems(requireActivity().getApplication());
+        setHasOptionsMenu(true);
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -65,19 +72,49 @@ public class InventoryFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // refresh the inventory list (that the adapter has access to)
-        refreshInventoryList();
+        refreshInventoryDisplay();
         // and tell the adapter that the list has changed
-        inventoryItemRecyclerViewAdapter.notifyDataSetChanged();
         // If performance became a problem we could
         //  -  only update when an inventory item is added (using startActivityForResult, and onActivityResult)
         //  -  use inventoryItemRecyclerViewAdapter.notifyItemInserted(insertIndex)
         // performance is not a problem. So, no need to do the above yet
     }
 
-    private void refreshInventoryList() {
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.inventory_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (super.onOptionsItemSelected(item)) {
+            return true;
+        };
+
+        switch (item.getItemId()) {
+            case R.id.action_clear_items: {
+                Toast.makeText(getContext(), "Clear Items", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+            case R.id.action_add_test_items: {
+                InventoryItem.createTestItems(requireActivity().getApplication());
+                refreshInventoryDisplay();
+
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    private void refreshInventoryDisplay() {
         inventoryList.clear();
         List<InventoryItem> refreshedInventoryList = InventoryItem.getInventoryItems(requireActivity().getApplication());
         inventoryList.addAll(refreshedInventoryList);
+        inventoryItemRecyclerViewAdapter.notifyDataSetChanged();
     }
 
     @Override
