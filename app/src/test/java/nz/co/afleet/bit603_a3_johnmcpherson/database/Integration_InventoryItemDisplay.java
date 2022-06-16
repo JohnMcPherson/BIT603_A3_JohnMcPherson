@@ -51,6 +51,7 @@ public class Integration_InventoryItemDisplay {
         inventoryRecyclerViewAdapter.incrementPage();
         assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
         inventoryRecyclerViewAdapter.incrementPage();
+        assertEquals(1, inventoryRecyclerViewAdapter.getItemCount());
         assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
     }
 
@@ -73,6 +74,8 @@ public class Integration_InventoryItemDisplay {
         inventoryItems.addAll(getDaoInventory().getInventoryItems());
         inventoryRecyclerViewAdapter.notifyDataSetChanged();
         assertEquals(0, inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
+        assertFalse(inventoryRecyclerViewAdapter.canDecrementPage());
+        assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
     }
 
     private DaoInventory getDaoInventory() {

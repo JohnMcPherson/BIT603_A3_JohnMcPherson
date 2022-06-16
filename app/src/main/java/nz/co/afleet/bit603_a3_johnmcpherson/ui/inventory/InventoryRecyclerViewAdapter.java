@@ -44,15 +44,15 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        InventoryItem inventoryItem = inventoryList.get(position);
+        InventoryItem inventoryItem = inventoryList.get(position + getPositionOfFirstItemToDisplay());
              holder.mName.setText(inventoryItem.getName());
              holder.mType.setText(inventoryItem.getItemType());
              holder.mQuantity.setText(String.valueOf(inventoryItem.getQuantity()));
     }
 
     public int getPositionOfFirstItemToDisplay() {
-        while(getRemainingItemsToDisplay() < 0) {
-            displayedPage--;
+        while(getRemainingItemsToDisplay() < 0 && displayedPage >0) {
+            decrementPage();
         }
         return displayedPage * numItemsPerPage;
     }
@@ -66,6 +66,17 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
             displayedPage++;
         }
     }
+
+    public boolean canDecrementPage() {
+        return displayedPage > 0;
+    }
+
+    public void decrementPage() {
+        if (canDecrementPage()) {
+            displayedPage--;
+        }
+    }
+
 
     private int getTotalNumberOfItems() {
         return inventoryList.size();
