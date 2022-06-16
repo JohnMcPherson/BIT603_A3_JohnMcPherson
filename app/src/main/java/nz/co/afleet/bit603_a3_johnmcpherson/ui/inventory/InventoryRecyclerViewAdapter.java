@@ -54,8 +54,14 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
         return displayedPage * numItemsPerPage;
     }
 
-    public int getPositionOfLastItemToDisplay() {
-        return getPositionOfFirstItemToDisplay() + getItemCount();
+    public boolean canIncrementPage() {
+        return getRemainingItemsToDisplay() > numItemsPerPage;
+    }
+
+    public void incrementPage() {
+        if (canIncrementPage()) {
+            displayedPage++;
+        }
     }
 
     private int getTotalNumberOfItems() {

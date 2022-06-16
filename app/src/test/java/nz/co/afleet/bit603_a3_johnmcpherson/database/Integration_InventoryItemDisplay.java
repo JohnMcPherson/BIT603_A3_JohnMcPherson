@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import nz.co.afleet.bit603_a3_johnmcpherson.ui.inventory.InventoryRecyclerViewAdapter;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class Integration_InventoryItemDisplay {
@@ -34,12 +36,20 @@ public class Integration_InventoryItemDisplay {
     @Test
     public void testRecyclerView() {
         InventoryItem.createTestItems(application);
+        InventoryItem.addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
         ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
         inventoryItems.addAll(getDaoInventory().getInventoryItems());
         InventoryRecyclerViewAdapter inventoryRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryItems);
         assertEquals(0, inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
         assertEquals(5, inventoryRecyclerViewAdapter.getItemCount());
-     }
+        assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
+        inventoryRecyclerViewAdapter.incrementPage();
+        inventoryRecyclerViewAdapter.incrementPage();
+        inventoryRecyclerViewAdapter.incrementPage();
+        assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
+        inventoryRecyclerViewAdapter.incrementPage();
+        assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
+    }
 
     private DaoInventory getDaoInventory() {
         return applicationDatabase.daoInventory();
