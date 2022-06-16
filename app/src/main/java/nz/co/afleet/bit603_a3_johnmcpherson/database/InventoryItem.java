@@ -147,6 +147,26 @@ public class InventoryItem {
         return returnMap;
     }
 
+    public static void createTestItems(Application application) {
+        int itemNumber = 1;
+        for (int cycleCount = 1; cycleCount <= 4; cycleCount++) {
+            createTestItem(application,"Biscuit", itemNumber, cycleCount);
+            itemNumber++;
+            createTestItem(application,"Cookie", itemNumber, cycleCount);
+            itemNumber++;
+            createTestItem(application,"Cake", itemNumber, cycleCount);
+            itemNumber++;
+            createTestItem(application,"Ingredient", itemNumber, cycleCount);
+            itemNumber++;
+            createTestItem(application,"Other", itemNumber, cycleCount);
+            itemNumber++;
+        }
+    }
+
+    private static void createTestItem(Application application, String itemType, int itemNumber, int cycleCount) {
+        addInventoryItemToDatabase(application, itemType + String.valueOf(itemNumber), itemType, String.valueOf(itemNumber + cycleCount));
+    }
+
     private static DaoInventory getDaoInventory(Application application) {
         ApplicationDatabase inventoryDatabase = ApplicationDatabase.getInstance(application);
         return inventoryDatabase.daoInventory();

@@ -17,10 +17,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
 
-import nz.co.afleet.bit603_a3_johnmcpherson.database.ApplicationDatabase;
-import nz.co.afleet.bit603_a3_johnmcpherson.database.DaoInventory;
-import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
-
+import static nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem.getInventoryItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -103,6 +100,15 @@ public class Integration_InventoryItem_DatabaseTesting {
         // check the contents (including conversion of string to double)
         testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_ITEM_TYPE, SUGAR_QUANTITY_DOUBLE);
     }
+
+    @Test
+    public void confirmTestInventoryItemsAdded() {
+        assertEquals(getInventoryItems(application).size(), 0);
+        InventoryItem.createTestItems(application);
+        int inventorySize = getInventoryItems(application).size();
+        assertEquals(inventorySize, 20);
+    }
+
     private void testInventoryItemContent(InventoryItem item, String expectedName, String expectedItemType, double expectedQuantity) {
         assertEquals(item.getName(), expectedName);
         assertEquals(item.getItemType(), expectedItemType);
