@@ -98,4 +98,6 @@
     <string name="administrator_label">Administrator</string>
     <string name="added_to_users">added to users</string>
     <string name="duplicate_user">Sorry. That user name is already registered</string>
+    <string name="remove_user_button">Remove User</string>
+
 </resources>
