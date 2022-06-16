@@ -96,7 +96,8 @@ public class InventoryFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.action_clear_items: {
-                Toast.makeText(getContext(), "Clear Items", Toast.LENGTH_LONG).show();
+                clearItemsOnConfirmation();
+
                 return true;
             }
 
@@ -109,6 +110,21 @@ public class InventoryFragment extends Fragment {
 
         return false;
 
+    }
+
+    private void clearItemsOnConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+        builder.setTitle(R.string.adding_test_items);
+        builder.setMessage(R.string.check_add_test_items);
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> {
+            // do nothing
+        });
+        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+            InventoryItem.deleteAllInventoryItems(requireActivity().getApplication());
+            refreshInventoryDisplay();
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void addTestItemsOnConfirmation() {

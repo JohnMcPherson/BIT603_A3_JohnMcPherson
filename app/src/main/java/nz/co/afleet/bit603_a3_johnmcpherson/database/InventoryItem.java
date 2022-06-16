@@ -23,12 +23,10 @@ package nz.co.afleet.bit603_a3_johnmcpherson.database;
 import android.app.Application;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Database;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.HashMap;
 import java.util.List;
 
 // This is a room database entity.
@@ -179,10 +177,7 @@ public class InventoryItem {
         return false;
     }
 
-    /*
-        The name says it. Only use for testing, or if you are SURE you want to clear the databse!
-    */
-    public static void FOR_TEST_USE_ONLY_deleteAllInventoryItems(Application application) {
-        getDaoInventory(application).FOR_TEST_USE_ONLY_deleteAllInventoryItems();
+    public static void deleteAllInventoryItems(Application application) {
+        getDaoInventory(application).deleteAllInventoryItems();
     }
 }

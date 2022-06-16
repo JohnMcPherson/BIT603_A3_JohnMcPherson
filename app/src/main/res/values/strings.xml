@@ -78,6 +78,8 @@
     <string name="inventory_add_cancelled">Discarded draft inventory item</string>
     <string name="adding_test_items">Adding Test Items</string>
     <string name="check_add_test_items">Are you sure you want to add the test items?</string>
+    <string name="clearing_all_inventory_items">Clearing all Items</string>
+    <string name="check_clear_inventory_items">Are you sure you want to delete all inventory items?</string>
 
     <!-- user detail -->
     <string name="user_list_label">Users</string>

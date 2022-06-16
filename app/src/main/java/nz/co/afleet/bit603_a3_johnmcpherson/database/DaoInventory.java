@@ -23,5 +23,5 @@ interface DaoInventory {
     List<nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem> getInventoryItems();
 
     @Query ("DELETE FROM InventoryItem")
-    public void FOR_TEST_USE_ONLY_deleteAllInventoryItems();
+    public void deleteAllInventoryItems();
 }
