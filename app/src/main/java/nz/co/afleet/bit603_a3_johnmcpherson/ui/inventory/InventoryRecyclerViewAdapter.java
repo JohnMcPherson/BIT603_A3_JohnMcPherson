@@ -28,6 +28,7 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentInventoryBinding
 public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<InventoryRecyclerViewAdapter.ViewHolder> {
 
     private final ArrayList<InventoryItem> inventoryList;
+    private int displayedPage = 1;
 
     public InventoryRecyclerViewAdapter(ArrayList<InventoryItem> items) {
         inventoryList = items;
@@ -55,6 +56,8 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
     public int getPositionOfLastItemToDisplay() {
         return getItemCount() - 1;
     }
+
+    public int
 
     @Override
     public int getItemCount() {
