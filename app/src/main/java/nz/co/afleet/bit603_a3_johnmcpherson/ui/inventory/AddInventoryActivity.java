@@ -16,8 +16,6 @@ import nz.co.afleet.bit603_a3_johnmcpherson.databinding.ActivityAddInventoryBind
 
 public class AddInventoryActivity extends AppCompatActivity {
 
-    // TODO Add information to the wireframe (e.g. error messages and cancel dialogs)
-
     private EditText editTextItemName;
     private EditText editTextQuantity;
     private TextView textViewErrorMessage;
