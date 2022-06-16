@@ -43,7 +43,8 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         InventoryItem inventoryItem = inventoryList.get(position);
-             holder.mContentView.setText(inventoryItem.getName());
+             holder.mName.setText(inventoryItem.getName());
+             holder.mType.setText(inventoryItem.getItemType());
              holder.mQuantity.setText(String.valueOf(inventoryItem.getQuantity()));
     }
 
@@ -53,19 +54,20 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-         public final TextView mContentView;
+        public final TextView mName;
+        public final TextView mType;
         public final TextView mQuantity;
-        public InventoryItem mItem;
 
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
-            mContentView = binding.textName;
+            mName = binding.textName;
+            mType = binding.textType;
             mQuantity = binding.textQuantity;
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mName.getText() + "'";
         }
     }
 }
