@@ -37,6 +37,10 @@ public class RemoveUserActivity extends AppCompatActivity {
             finish();
         });
 
+        binding.buttonCancel.setOnClickListener(view -> {
+            finish();
+        });
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.remove_user_label);
     }
