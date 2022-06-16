@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,11 +14,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
+import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
 import nz.co.afleet.bit603_a3_johnmcpherson.databinding.ActivityAddInventoryBinding;
 
 public class AddInventoryActivity extends AppCompatActivity {
 
     private EditText editTextItemName;
+    private RadioGroup radioGroupItemType;
     private EditText editTextQuantity;
     private TextView textViewErrorMessage;
 
@@ -33,6 +37,7 @@ public class AddInventoryActivity extends AppCompatActivity {
 
         // use binding to find and initialise the required views
         editTextItemName = binding.editTextItemName;
+        radioGroupItemType = binding.radioGroupItemType;
         editTextQuantity = binding.editTextQuantity;
         textViewErrorMessage = binding.textErrorMessageAdd;
         Button buttonAdd = binding.buttonAdd;
@@ -46,12 +51,13 @@ public class AddInventoryActivity extends AppCompatActivity {
             boolean additionSuccessful = false; // we have not yet tried to add the item, so initialise as false
 
             if (hasItemName && hasPassword) {
-/*
                 if (!InventoryItem.isDuplicateOfInventoryItem(getApplication(), stringItemName)) {
-                   InventoryItem.addInventoryItemToDatabase(getApplication(), stringItemName, stringQuantity);
+                    int selectedItemTypeId = radioGroupItemType.getCheckedRadioButtonId();
+                    RadioButton selectedItemTypeButton = findViewById(selectedItemTypeId);
+                    String stringItemType = selectedItemTypeButton.getText().toString();
+                   InventoryItem.addInventoryItemToDatabase(getApplication(), stringItemName, stringItemType, stringQuantity);
                    additionSuccessful = true;
                 }
-*/
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
             String errorMessage = determineErrorMessage(hasItemName, hasPassword, additionSuccessful);
