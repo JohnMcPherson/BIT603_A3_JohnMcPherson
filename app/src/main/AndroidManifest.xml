@@ -31,6 +31,10 @@
             android:name=".AddUserActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".RemoveUserActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>

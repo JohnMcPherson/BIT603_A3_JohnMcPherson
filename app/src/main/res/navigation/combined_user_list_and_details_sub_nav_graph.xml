@@ -16,7 +16,16 @@
         <action
             android:id="@+id/action_nav_users_to_add_user"
             app:destination="@id/sw600AddUserFragment" />
+        <action
+            android:id="@+id/action_nav_users_to_remove_user"
+            app:destination="@id/removeUserActivity" />
     </fragment>
+    <activity
+        android:id="@+id/removeUserActivity"
+        android:name="nz.co.afleet.bit603_a3_johnmcpherson.RemoveUserActivity"
+        android:label="@string/add_user_label"
+        tools:layout="@layout/fragment_add_user" >
+    </activity>
     <activity
         android:id="@+id/sw600AddUserFragment"
         android:name="nz.co.afleet.bit603_a3_johnmcpherson.AddUserActivity"

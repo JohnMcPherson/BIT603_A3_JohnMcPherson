@@ -2,9 +2,14 @@ package nz.co.afleet.bit603_a3_johnmcpherson.ui.users;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +35,12 @@ public class UserListFragment extends Fragment {
     private FragmentUserListBinding binding;
     private final ArrayList<User> mUsers = new ArrayList<>();
     private UserRecyclerViewAdapter userRecyclerViewAdapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +70,29 @@ public class UserListFragment extends Fragment {
         // and tell the adapter that the list has changed
         // due to the small amount of data, performance should be fine, and we do not need to respond to specific change events
         userRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.user_menu, menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (super.onOptionsItemSelected(item)) {
+            return true;
+        };
+
+        switch (item.getItemId()) {
+            case R.id.action_remove_user: {
+               Navigation.findNavController(binding.getRoot()).navigate(R.id.action_nav_users_to_remove_user,null);
+               return true;
+            }
+        }
+
+        return false;
     }
 
     private void refreshUserList() {
