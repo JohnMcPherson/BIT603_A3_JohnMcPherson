@@ -65,8 +65,6 @@
     <!-- inventory strings -->
     <string name="action_clear_items">Clear Items</string>
     <string name="action_add_test_items">Add Test Items</string>
-
-    <!--add inventory activity strings-->
     <string name="missing_inventory_item_name">Item Name</string>
     <string name="missing_inventory_item_quantity">Quantity</string>
     <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
@@ -80,6 +78,12 @@
     <string name="check_add_test_items">Are you sure you want to add the test items?</string>
     <string name="clearing_all_inventory_items">Clearing all Items</string>
     <string name="check_clear_inventory_items">Are you sure you want to delete all inventory items?</string>
+    <string name="item_type_label">Item Type</string>
+    <string name="item_type_biscuit">Biscuit</string>
+    <string name="item_type_cookie">Cookie</string>
+    <string name="item_type_cake">Cake</string>
+    <string name="item_type_ingredient">Ingredient</string>
+    <string name="item_type_other">Other</string>
 
     <!-- user detail -->
     <string name="user_list_label">Users</string>

@@ -49,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="5"
         android:hint="@string/required"
@@ -58,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/barrierVertical"
-        app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupItemType" />
 
     <TextView
         android:id="@+id/textItemNameLabel"
@@ -130,5 +129,55 @@
         android:textColor="@color/mandatory_and_error_indicator"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextQuantity"
         app:layout_constraintStart_toEndOf="@+id/textQuantityLabel" />
+
+    <TextView
+        android:id="@+id/itemTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupItemType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierVertical"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemName">
+
+        <RadioButton
+            android:id="@+id/radioBiscuit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_type_biscuit" />
+
+        <RadioButton
+            android:id="@+id/radioCookie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_type_cookie" />
+
+        <RadioButton
+            android:id="@+id/radioCake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_type_cake" />
+
+        <RadioButton
+            android:id="@+id/radioIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_type_ingredient" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_type_other" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
