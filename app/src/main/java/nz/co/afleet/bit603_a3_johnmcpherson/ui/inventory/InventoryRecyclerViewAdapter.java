@@ -48,6 +48,14 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
              holder.mQuantity.setText(String.valueOf(inventoryItem.getQuantity()));
     }
 
+    public int getPositionOfFirstItemToDisplay() {
+        return 0;
+    }
+
+    public int getPositionOfLastItemToDisplay() {
+        return getItemCount() - 1;
+    }
+
     @Override
     public int getItemCount() {
         return inventoryList.size();
