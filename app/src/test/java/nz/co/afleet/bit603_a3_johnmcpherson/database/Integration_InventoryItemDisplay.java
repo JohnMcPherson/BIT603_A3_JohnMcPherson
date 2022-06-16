@@ -51,6 +51,7 @@ public class Integration_InventoryItemDisplay {
         inventoryRecyclerViewAdapter.incrementPage();
         assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
         inventoryRecyclerViewAdapter.incrementPage();
+        assertEquals(20,inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
         assertEquals(1, inventoryRecyclerViewAdapter.getItemCount());
         assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
     }
