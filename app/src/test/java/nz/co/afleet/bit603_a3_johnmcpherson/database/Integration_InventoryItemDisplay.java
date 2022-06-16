@@ -38,7 +38,7 @@ public class Integration_InventoryItemDisplay {
         inventoryItems.addAll(getDaoInventory().getInventoryItems());
         InventoryRecyclerViewAdapter inventoryRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryItems);
         assertEquals(0, inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
-        assertEquals(4, inventoryRecyclerViewAdapter.getPositionOfLastItemToDisplay());
+        assertEquals(5, inventoryRecyclerViewAdapter.getItemCount());
      }
 
     private DaoInventory getDaoInventory() {
