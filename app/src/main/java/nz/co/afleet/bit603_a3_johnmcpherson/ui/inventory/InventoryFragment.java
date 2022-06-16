@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
@@ -32,7 +32,7 @@ public class InventoryFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 
-    private final LinkedHashMap<String, Double> inventoryMap = new LinkedHashMap<>();
+    private final ArrayList<InventoryItem> inventoryList = new ArrayList<>();
     private InventoryRecyclerViewAdapter inventoryItemRecyclerViewAdapter;
 
     /**
@@ -75,10 +75,9 @@ public class InventoryFragment extends Fragment {
     }
 
     private void refreshInventoryList() {
-        inventoryMap.clear();
-        HashMap<String, Double> inventoryHashMap = InventoryItem.getInventoryItems(requireActivity().getApplication());
-        inventoryMap.putAll(inventoryHashMap);
-        // we can't directly use inventoryHashMap. inventoryMap is directly pointed to by the InventoryItemRecyclerViewAdapter
+        inventoryList.clear();
+        List<InventoryItem> refreshedInventoryList = InventoryItem.getInventoryItems(requireActivity().getApplication());
+        inventoryList.addAll(refreshedInventoryList);
     }
 
     @Override
@@ -97,7 +96,7 @@ public class InventoryFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             // create adapter with reference to a list that we will periodically update
-            inventoryItemRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryMap);
+            inventoryItemRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryList);
             // add the adapter to the recycler view
             recyclerView.setAdapter(inventoryItemRecyclerViewAdapter);
         }
