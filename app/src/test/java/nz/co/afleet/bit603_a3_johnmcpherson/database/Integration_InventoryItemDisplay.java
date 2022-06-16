@@ -39,7 +39,6 @@ public class Integration_InventoryItemDisplay {
     @Test
     public void testRecyclerViewPageIncrement() {
         createTestItems(application);
-        addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
         ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
         inventoryItems.addAll(getDaoInventory().getInventoryItems());
         InventoryRecyclerViewAdapter inventoryRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryItems);
@@ -49,6 +48,11 @@ public class Integration_InventoryItemDisplay {
         inventoryRecyclerViewAdapter.incrementPage();
         inventoryRecyclerViewAdapter.incrementPage();
         inventoryRecyclerViewAdapter.incrementPage();
+        assertFalse(inventoryRecyclerViewAdapter.canIncrementPage());
+        addInventoryItemToDatabase(application, "Test", "Cookie", "2" );
+        inventoryItems.clear();
+        inventoryItems.addAll(getDaoInventory().getInventoryItems());
+        inventoryRecyclerViewAdapter.notifyDataSetChanged();
         assertTrue(inventoryRecyclerViewAdapter.canIncrementPage());
         inventoryRecyclerViewAdapter.incrementPage();
         assertEquals(20,inventoryRecyclerViewAdapter.getPositionOfFirstItemToDisplay());
