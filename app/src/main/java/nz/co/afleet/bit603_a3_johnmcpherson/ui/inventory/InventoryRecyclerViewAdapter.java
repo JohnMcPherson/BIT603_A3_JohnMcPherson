@@ -64,6 +64,7 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
     public void incrementPage() {
         if (canIncrementPage()) {
             displayedPage++;
+            notifyDataSetChanged();
         }
     }
 
@@ -74,6 +75,7 @@ public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<Inventory
     public void decrementPage() {
         if (canDecrementPage()) {
             displayedPage--;
+            notifyDataSetChanged();
         }
     }
 

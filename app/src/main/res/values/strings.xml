@@ -61,6 +61,8 @@
     <!-- general purpose strings -->
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="next">Next</string>>
+    <string name="previous">Previous</string>
 
     <!-- inventory strings -->
     <string name="action_clear_items">Clear Items</string>
@@ -84,6 +86,7 @@
     <string name="item_type_cake">Cake</string>
     <string name="item_type_ingredient">Ingredient</string>
     <string name="item_type_other">Other</string>
+
 
     <!-- user detail -->
     <string name="user_list_label">Users</string>

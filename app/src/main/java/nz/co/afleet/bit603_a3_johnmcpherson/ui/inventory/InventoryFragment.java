@@ -14,7 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +31,8 @@ import java.util.Objects;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentInventoryListBinding;
+import nz.co.afleet.bit603_a3_johnmcpherson.databinding.FragmentUserDetailBinding;
 
 /**
  * A fragment representing a list of Items.
@@ -115,7 +117,7 @@ public class InventoryFragment extends Fragment {
     private void clearItemsOnConfirmation() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
         builder.setTitle(R.string.adding_test_items);
-        builder.setMessage(R.string.check_add_test_items);
+        builder.setMessage(R.string.check_clear_inventory_items);
         builder.setNegativeButton(R.string.cancel, (dialog, which) -> {
             // do nothing
         });
@@ -169,6 +171,18 @@ public class InventoryFragment extends Fragment {
             // add the adapter to the recycler view
             recyclerView.setAdapter(inventoryItemRecyclerViewAdapter);
         }
+
+        Button nextButton = view.findViewById(R.id.buttonNext);
+        nextButton.setOnClickListener(view1 -> {
+            if (inventoryItemRecyclerViewAdapter.canIncrementPage()){
+                inventoryItemRecyclerViewAdapter.incrementPage();
+            }
+        });
+
+        Button previousButton = view.findViewById(R.id.buttonPrevious);
+        previousButton.setOnClickListener(view1 -> {
+            if (inventoryItemRecyclerViewAdapter.canDecrementPage()) inventoryItemRecyclerViewAdapter.decrementPage();
+        });
 
         FloatingActionButton buttonAddInventory = view.findViewById(R.id.fabAddInventoryItem);
         buttonAddInventory.setOnClickListener(v -> {
