@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import nz.co.afleet.bit603_a3_johnmcpherson.R;
 import nz.co.afleet.bit603_a3_johnmcpherson.database.InventoryItem;
@@ -99,8 +101,7 @@ public class InventoryFragment extends Fragment {
             }
 
             case R.id.action_add_test_items: {
-                InventoryItem.createTestItems(requireActivity().getApplication());
-                refreshInventoryDisplay();
+                addTestItemsOnConfirmation();
 
                 return true;
             }
@@ -108,6 +109,21 @@ public class InventoryFragment extends Fragment {
 
         return false;
 
+    }
+
+    private void addTestItemsOnConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+        builder.setTitle(R.string.adding_test_items);
+        builder.setMessage(R.string.check_add_test_items);
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> {
+            // do nothing
+        });
+        builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+            InventoryItem.createTestItems(requireActivity().getApplication());
+            refreshInventoryDisplay();
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void refreshInventoryDisplay() {

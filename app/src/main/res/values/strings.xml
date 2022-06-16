@@ -56,8 +56,11 @@
     <string name="inventory_name_label">Item Name</string>
     <string name="inventory_quantity_label">Quantity</string>
     <string name="required">Required</string>
-    <string name="cancel">Cancel</string>
     <string name="add">Add</string>
+
+    <!-- general purpose strings -->
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 
     <!-- inventory strings -->
     <string name="action_clear_items">Clear Items</string>
@@ -73,6 +76,8 @@
     <string name="keep_draft">Keep draft</string>
     <string name="discard_draft">Discard</string>
     <string name="inventory_add_cancelled">Discarded draft inventory item</string>
+    <string name="adding_test_items">Adding Test Items</string>
+    <string name="check_add_test_items">Are you sure you want to add the test items?</string>
 
     <!-- user detail -->
     <string name="user_list_label">Users</string>
